@@ -26,7 +26,7 @@ const choiceClass = () => {
           </>
         ))}
 
-        <DescriptionBox description={description} />
+        <DescriptionBox handleChoice={handleChoice} description={description} />
       </SimpleGrid>
     </>
   );
