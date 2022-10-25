@@ -1,6 +1,5 @@
 import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
 import Link from "next/link";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (

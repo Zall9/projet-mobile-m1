@@ -1,13 +1,10 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
-import { constantes } from "../../const";
-import { breakpoints } from "../../theme";
+import { SimpleGrid } from "@chakra-ui/react";
 import { classes } from "../../model/classList";
 import ChoiceBox from "./ChoiceBox";
 import DescriptionAndSubmitBox from "./DescriptionAndSubmitBox";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const choiceClass = (props) => {
-  const playerClasse = props.classe;
   const RootSetPlayerClass = props.RootSetPlayerClass;
   const [selectedClass, setSelectedClass] = useState();
   const [description, setDescription] = useState(null);
@@ -26,7 +23,6 @@ const choiceClass = (props) => {
             <ChoiceBox classe={classe} handleChoice={handleChoice} />
           </>
         ))}
-
         <DescriptionAndSubmitBox
           handleChoice={handleChoice}
           description={description}
