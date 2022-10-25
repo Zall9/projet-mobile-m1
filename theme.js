@@ -9,3 +9,13 @@ export var breakpoints = {
     h6: { base: "12px", md: "16px", lg: "20px" },
   },
 };
+
+export var colors = {
+  // Colors for the different elements
+  fonts: {
+    primary: "#ffffff",
+    black: "#0b0b0b",
+    white: "#fbfbfb",
+    gray: "#d1d1d1",
+  },
+};

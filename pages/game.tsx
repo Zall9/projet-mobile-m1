@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import ChoiceClass from "../components/choiceClass.jsx";
+import ChoiceClass from "../components/choiceClass/choiceClass.jsx";
 const game = () => {
   return (
     <>
