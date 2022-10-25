@@ -3,16 +3,17 @@ import { constantes } from "../../const";
 import { breakpoints } from "../../theme";
 import { classes } from "../../model/classList";
 import ChoiceBox from "./ChoiceBox";
-import DescriptionBox from "./DescriptionBox";
+import DescriptionAndSubmitBox from "./DescriptionAndSubmitBox";
 import { useEffect, useRef, useState } from "react";
 
-const choiceClass = () => {
+const choiceClass = (props) => {
+  const playerClasse = props.classe;
+  const RootSetPlayerClass = props.RootSetPlayerClass;
   const [selectedClass, setSelectedClass] = useState();
   const [description, setDescription] = useState(null);
 
   const handleChoice = (classe, event) => {
     //make sure that setSelected state is updated prev state nextstate
-
     setDescription(classe.description);
     setSelectedClass(classe);
   };
@@ -26,7 +27,12 @@ const choiceClass = () => {
           </>
         ))}
 
-        <DescriptionBox handleChoice={handleChoice} description={description} />
+        <DescriptionAndSubmitBox
+          handleChoice={handleChoice}
+          description={description}
+          selectedClass={selectedClass}
+          RootSetPlayerClass={RootSetPlayerClass}
+        />
       </SimpleGrid>
     </>
   );

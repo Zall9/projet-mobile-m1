@@ -5,7 +5,6 @@ import { breakpoints, colors } from "../../theme";
 const ChoiceBox = (props) => {
   const classe = props.classe;
   const handleChoice = props.handleChoice;
-  const classes = props.classes;
   return (
     <Box
       sx={{

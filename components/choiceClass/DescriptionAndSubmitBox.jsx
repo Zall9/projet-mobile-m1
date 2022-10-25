@@ -4,11 +4,15 @@ import { breakpoints, colors } from "../../theme";
 const DescriptionAndSubmitBox = (props) => {
   console.log("description", props.description);
   const description = props.description;
-  const handleChoice = props.handleChoice;
+  const RootSetPlayerClass = props.RootSetPlayerClass;
   const color = description !== null ? "teal" : "red";
+  const selectedClass = props.selectedClass;
+  const handleClick = () => {
+    RootSetPlayerClass(selectedClass);
+  };
+
   return (
     <Box
-      // add shadow to the box
       sx={{
         borderColor: "black",
         boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)",
@@ -21,7 +25,9 @@ const DescriptionAndSubmitBox = (props) => {
       <Text color={colors.fonts.black} fontSize={breakpoints.fontSize.h5}>
         {description}
       </Text>
-      <Button colorScheme={color}>Valider le choix</Button>
+      <Button colorScheme={color} onClick={handleClick}>
+        Valider le choix
+      </Button>
     </Box>
   );
 };
