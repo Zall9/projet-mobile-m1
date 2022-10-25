@@ -2,6 +2,7 @@ import { Box, SimpleGrid, Text } from "@chakra-ui/react";
 import { constantes } from "../const";
 import { breakpoints } from "../breakpoints";
 import { classes } from "../model/classList";
+
 const choiceClass = () => {
   console.log(classes, "classesSQKJDLQS");
   console.log(breakpoints, "breakpointsSQD");
@@ -15,6 +16,9 @@ const choiceClass = () => {
                 borderColor: "black",
                 borderWidth: "1px",
                 height: "50vh",
+                backgroundImage: `url(${classe.image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
             >
               <Text fontSize={breakpoints.fontSize.h3}>{classe.nom}</Text>
