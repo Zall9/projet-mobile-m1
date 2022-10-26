@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const withPWA = require("next-pwa")({
-  dest: "public",
+  dest: "public"
 });
 const NextConfig = {
   images: {
-    domains: ["localhost"],
+    domains: ["localhost"]
   },
   sass: true,
-  modules: true,
+  modules: true
 };
 module.exports = withPWA({
-  ...NextConfig,
+  ...NextConfig
 });
