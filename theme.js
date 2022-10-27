@@ -8,6 +8,14 @@ export var breakpoints = {
     h5: { base: "14px", md: "20px", lg: "24px" },
     h6: { base: "12px", md: "16px", lg: "20px" },
   },
+  eventCardSize: {
+    base: "275px",
+    sm: "350px",
+    md: "550px",
+    lg: "750px",
+    xl: "850px",
+    "2xl": "1800px",
+  },
 };
 
 export var colors = {

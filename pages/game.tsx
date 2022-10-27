@@ -3,7 +3,9 @@ import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import { events } from "../model/eventList.js";
 import { pickRandomEvent } from "../model/utils/events.js";
 import Event from "../components/event/Event";
-import {ClassController} from "../model/Classes/ClassController";
+import { ClassController } from "../model/Classes/ClassController";
+import { Box } from "@chakra-ui/react";
+import { breakpoints } from "../theme";
 
 export default function game() {
   const defaultClass = ClassController.getById("Unknown");
@@ -16,10 +18,10 @@ export default function game() {
       setCurrentEvent(pickRandomEvent(events));
     } else {
       setCurrentEvent(
-          // @ts-ignore
-          Object.values(events).filter((elt) => {
-            return elt.classe == playerClass.nom;
-          })[0] ?? pickRandomEvent(events)
+        // @ts-ignore
+        Object.values(events).filter((elt) => {
+          return elt.classe == playerClass.nom;
+        })[0] ?? pickRandomEvent(events)
       );
     }
   }, [playerClass]);
@@ -29,9 +31,7 @@ export default function game() {
       {playerClass == defaultClass ? (
         <ChoiceClass RootSetPlayerClass={setPlayerClass}></ChoiceClass>
       ) : (
-        <>
-          <Event event={currentEvent}></Event>
-        </>
+        <Event event={currentEvent}></Event>
       )}
     </>
   );
