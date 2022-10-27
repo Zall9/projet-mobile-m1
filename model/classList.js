@@ -1,5 +1,10 @@
 export var classes = [
   {
+    nom: "rustine",
+    description: "Rustine",
+    image: "/static/images/class/rustine.png",
+  },
+  {
     nom: "Mage",
     description:
       "Le mage est un personnage qui utilise la magie pour attaquer ses ennemis.",

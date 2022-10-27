@@ -15,7 +15,7 @@ const ChoiceBox = (props) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      as="Button"
+      as="button"
       onClick={(event) => handleChoice(classe, event)}
     >
       <Text color={colors.fonts.white} fontSize={breakpoints.fontSize.h1}>
