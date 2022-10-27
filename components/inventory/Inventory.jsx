@@ -30,12 +30,7 @@ const Inventory = (props) => {
     >
       {inventory.map((item, index) => {
         return (
-          <Box
-            key={item.id + index}
-            sx={{
-              position: "relative",
-            }}
-          >
+          <Box key={item.id + index}>
             <Box
               width="54px"
               bg="tomato"
