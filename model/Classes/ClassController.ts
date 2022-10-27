@@ -11,6 +11,7 @@ export class ClassController {
     }
 
     static getImage(classInfo: IClass): string {
+        console.log(classInfo);
         return `${Constants.IMAGE_PATH}class/${classInfo.image}${Constants.IMAGE_EXT}`;
     }
 }

@@ -2,12 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import { events } from "../model/eventList.js";
 import { pickRandomEvent } from "../model/utils/events.js";
-import { classes } from "../model/classList";
 import Event from "../components/event/Event";
 import {ClassController} from "../model/Classes/ClassController";
 
 export default function game() {
-  const [playerClass, setPlayerClass] = useState(ClassController.getById("Unknown"));
+  const defaultClass = ClassController.getById("Unknown");
+  const [playerClass, setPlayerClass] = useState(defaultClass);
   const [currentEvent, setCurrentEvent] = useState(events.unknown);
   const step = useRef(0);
 
@@ -26,7 +26,7 @@ export default function game() {
 
   return (
     <>
-      {playerClass == classes[0] ? (
+      {playerClass == defaultClass ? (
         <ChoiceClass RootSetPlayerClass={setPlayerClass}></ChoiceClass>
       ) : (
         <>
