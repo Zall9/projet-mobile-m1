@@ -3,7 +3,7 @@ import Constants from "../Constants";
 
 export class ClassController {
     static getById(id: string): IClass {
-        return require((`./ClassList/${id}.ts`)) as IClass;
+        return require((`./ClassList/${id}.ts`)).classInfos as IClass;
     }
 
     static getClassesByIds(ids: string[]): IClass[] {
@@ -11,7 +11,6 @@ export class ClassController {
     }
 
     static getImage(classInfo: IClass): string {
-        console.log(classInfo);
         return `${Constants.IMAGE_PATH}class/${classInfo.image}${Constants.IMAGE_EXT}`;
     }
 }
