@@ -34,4 +34,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-package-lock.json
+/package-lock.json
+/yarn.lock
+/public/sw.js
+/public/sw.js.map
+/public/workbox-327c579b.js
+/public/workbox-327c579b.js.map
+/pages/_app.js
+/pages/api/hello.js
+/pages/index.js
+/.eslintrc.json
