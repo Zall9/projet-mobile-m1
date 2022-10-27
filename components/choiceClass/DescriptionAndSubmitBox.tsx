@@ -1,7 +1,8 @@
 import { Box, Button, Text } from "@chakra-ui/react";
 import React from "react";
 import { breakpoints, colors } from "../../theme";
-const DescriptionAndSubmitBox = (props) => {
+
+export default function DescriptionAndSubmitBox(props: any) {
   console.log("description", props.description);
   const description = props.description;
   const RootSetPlayerClass = props.RootSetPlayerClass;
@@ -30,6 +31,4 @@ const DescriptionAndSubmitBox = (props) => {
       </Button>
     </Box>
   );
-};
-
-export default DescriptionAndSubmitBox;
+}

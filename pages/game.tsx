@@ -1,12 +1,13 @@
-import { Box, Text } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-import ChoiceClass from "../components/choiceClass/choiceClass.jsx";
+import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import { events } from "../model/eventList.js";
 import { pickRandomEvent } from "../model/utils/events.js";
 import { classes } from "../model/classList";
 import Event from "../components/event/Event";
-const game = () => {
-  const [playerClass, setPlayerClass] = useState(classes[0]);
+import {ClassController} from "../model/Classes/ClassController";
+
+export default function game() {
+  const [playerClass, setPlayerClass] = useState(ClassController.getById("Unknown"));
   const [currentEvent, setCurrentEvent] = useState(events.unknown);
   const step = useRef(0);
 
@@ -15,10 +16,10 @@ const game = () => {
       setCurrentEvent(pickRandomEvent(events));
     } else {
       setCurrentEvent(
-        // @ts-ignore
-        Object.values(events).filter((elt) => {
-          return elt.classe == playerClass.nom;
-        })[0] ?? pickRandomEvent(events)
+          // @ts-ignore
+          Object.values(events).filter((elt) => {
+            return elt.classe == playerClass.nom;
+          })[0] ?? pickRandomEvent(events)
       );
     }
   }, [playerClass]);
@@ -34,6 +35,4 @@ const game = () => {
       )}
     </>
   );
-};
-
-export default game;
+}

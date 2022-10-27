@@ -1,23 +1,25 @@
 import { SimpleGrid } from "@chakra-ui/react";
-import { classes } from "../../model/classList";
 import ChoiceBox from "./ChoiceBox";
 import DescriptionAndSubmitBox from "./DescriptionAndSubmitBox";
-import { useState } from "react";
+import {SetStateAction, useState} from "react";
+import { ClassController } from "../../model/Classes/ClassController";
+import {IClass} from "../../model/Classes/IClass";
 
-const choiceClass = (props) => {
+export default function choiceClass(props: any) {
   const RootSetPlayerClass = props.RootSetPlayerClass;
-  const [selectedClass, setSelectedClass] = useState({});
+  const [selectedClass, setSelectedClass] = useState(ClassController.getById("Unknown"));
   const [description, setDescription] = useState("");
-  const handleChoice = (classe, event) => {
+
+  function handleChoice(classe: SetStateAction<IClass>) {
     //make sure that setSelected state is updated prev state nextstate
-    setDescription(classe.description);
+    setDescription((classe as IClass).description);
     setSelectedClass(classe);
   };
+
   return (
     <>
       <SimpleGrid columns={3} spacing="5px" h="100%">
-        {classes
-          .filter((elt) => elt != classes[0])
+        {ClassController.getClassesByIds(["Mage", "Thief", "Warrior"])
           .map((classe) => (
             <>
               <ChoiceBox classe={classe} handleChoice={handleChoice} />
@@ -32,6 +34,4 @@ const choiceClass = (props) => {
       </SimpleGrid>
     </>
   );
-};
-
-export default choiceClass;
+}
