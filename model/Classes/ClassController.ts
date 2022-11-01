@@ -11,6 +11,6 @@ export class ClassController {
     }
 
     static getImage(classInfo: IClass): string {
-        return `${Constants.IMAGE_PATH}class/${classInfo.image}${Constants.IMAGE_EXT}`;
+        return classInfo.image === "unknown" ? Constants.UNKNOWN_PATH : `${Constants.IMAGE_PATH}class/${classInfo.image}${Constants.IMAGE_EXT}`;
     }
 }

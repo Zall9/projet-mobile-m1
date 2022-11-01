@@ -5,7 +5,7 @@ import {SetStateAction, useState} from "react";
 import { ClassController } from "../../model/Classes/ClassController";
 import {IClass} from "../../model/Classes/IClass";
 
-export default function choiceClass(props: any) {
+export default function choiceClass(props: { RootSetPlayerClass: (classe: SetStateAction<IClass>) => void; }) {
   const RootSetPlayerClass = props.RootSetPlayerClass;
   const [selectedClass, setSelectedClass] = useState(ClassController.getById("Unknown"));
   const [description, setDescription] = useState("");
@@ -14,7 +14,7 @@ export default function choiceClass(props: any) {
     //make sure that setSelected state is updated prev state nextstate
     setDescription((classe as IClass).description);
     setSelectedClass(classe);
-  };
+  }
 
   return (
     <>
@@ -26,7 +26,6 @@ export default function choiceClass(props: any) {
             </>
           ))}
         <DescriptionAndSubmitBox
-          handleChoice={handleChoice}
           description={description}
           selectedClass={selectedClass}
           RootSetPlayerClass={RootSetPlayerClass}

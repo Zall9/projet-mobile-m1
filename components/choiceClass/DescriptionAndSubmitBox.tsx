@@ -1,9 +1,9 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import React from "react";
+import React, {SetStateAction} from "react";
 import { breakpoints, colors } from "../../theme";
+import {IClass} from "../../model/Classes/IClass";
 
-export default function DescriptionAndSubmitBox(props: any) {
-  console.log("description", props.description);
+export default function DescriptionAndSubmitBox(props: { description: string; RootSetPlayerClass: (classe: SetStateAction<IClass>) => void; selectedClass: IClass; }) {
   const description = props.description;
   const RootSetPlayerClass = props.RootSetPlayerClass;
   const color = description !== null ? "teal" : "red";

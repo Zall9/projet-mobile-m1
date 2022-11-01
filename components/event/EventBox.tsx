@@ -1,10 +1,12 @@
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import { breakpoints, colors } from "../../theme";
+import {IEvent} from "../../model/Events/IEvent";
+import {EventController} from "../../model/Events/EventController";
 
-const EventBox = (props: any) => {
+export default function EventBox(props: { event: IEvent; }) {
   const event = props.event;
-  function handler(event: any) {}
+  const handler: React.MouseEventHandler = (event) => {}
   return (
     <>
       <Box
@@ -15,7 +17,7 @@ const EventBox = (props: any) => {
           borderColor: "black",
           borderWidth: "1px",
           height: "80vh",
-          backgroundImage: `url(${event.image})`,
+          backgroundImage: `url(${EventController.getImage(event)})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
@@ -32,6 +34,4 @@ const EventBox = (props: any) => {
       </Box>
     </>
   );
-};
-
-export default EventBox;
+}

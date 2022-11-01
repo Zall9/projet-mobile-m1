@@ -1,9 +1,9 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { breakpoints, colors } from "../../theme";
 import EventBox from "./EventBox";
 import Inventory from "../inventory/Inventory";
-const Event = (props: any) => {
+import {IEvent} from "../../model/Events/IEvent";
+export default function Event(props: { event: IEvent; }) {
   const [selectedOutput, setSelectedOutput] = useState({});
   const event = props.event;
   return (
@@ -27,13 +27,10 @@ const Event = (props: any) => {
             alignItems: "center",
           }}
         >
-          {/* @ts-ignore */}
           <EventBox event={event}></EventBox>
         </SimpleGrid>
       </Box>
       <Inventory></Inventory>
     </>
   );
-};
-
-export default Event;
+}
