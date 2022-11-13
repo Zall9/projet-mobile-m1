@@ -1,20 +1,38 @@
-import {
-  ArrowBackIcon,
-  ArrowDownIcon,
-  ArrowForwardIcon,
-  ArrowLeftIcon,
-  ArrowRightIcon,
-  ArrowUpIcon,
-} from "@chakra-ui/icons";
-import { Box, Icon, Text } from "@chakra-ui/react";
+import {ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, IconProps,} from "@chakra-ui/icons";
+import {Box, ComponentWithAs, Icon, Text} from "@chakra-ui/react";
 import React from "react";
-import { breakpoints, colors } from "../../theme";
-import { IEvent } from "../../model/Events/IEvent";
-import { EventController } from "../../model/Events/EventController";
+import {breakpoints, colors} from "../../theme";
+import {IEvent} from "../../model/Events/IEvent";
+import {EventController} from "../../model/Events/EventController";
+import {Direction, IOutput} from "../../model/Events/IOutput";
+
+function positionFromDirection(direction: Direction) : {[key: string]: string} {
+    switch (direction) {
+        case Direction.up:
+            return {
+                top: "12%"
+            }
+        case Direction.down:
+            return {
+                bottom: "25%"
+            }
+        default:
+            return {
+                [Direction[direction]]: "20%",
+                bottom: "50%",
+            }
+    }
+}
 
 export default function EventBox(props: { event: IEvent }) {
   const event = props.event;
   const handler: React.MouseEventHandler = (event) => {};
+  const stringToArrow : {[key: string]: ComponentWithAs<"svg", IconProps>} = {
+      up: ArrowUpIcon,
+      down: ArrowDownIcon,
+      left: ArrowLeftIcon,
+      right: ArrowRightIcon
+  };
   return (
     <>
       <Box
@@ -31,48 +49,18 @@ export default function EventBox(props: { event: IEvent }) {
         }}
         onClick={handler}
       >
-        {event.sorties.map((output: any) => {
-          return output == "haut" ? (
-            <Icon
-              color="white"
-              sx={{
-                position: "absolute",
-                top: "12%",
-              }}
-              as={ArrowUpIcon}
-            />
-          ) : output == "bas" ? (
-            <Icon
-              color="white"
-              sx={{
-                position: "absolute",
-                bottom: "25%",
-              }}
-              as={ArrowDownIcon}
-            />
-          ) : output == "droite" ? (
-            <Icon
-              color="white"
-              sx={{
-                position: "absolute",
-                right: "20%",
-                bottom: "50%",
-              }}
-              as={ArrowForwardIcon}
-            />
-          ) : output == "gauche" ? (
-            <Icon
-              color="white"
-              // I need the icon to be on the left INSIDE of the box
-              sx={{
-                position: "absolute",
-                left: "20%",
-                bottom: "50%",
-              }}
-              as={ArrowBackIcon}
-            />
-          ) : null;
-        })}
+        {
+            event.sorties.map((output: IOutput) => {
+              return <Icon
+                  color="white"
+                  sx={{
+                    position: "absolute",
+                    ...positionFromDirection(output.direction)
+                  }}
+                  as={stringToArrow[Direction[output.direction]]}
+                />
+            })
+        }
         <Text
           position="absolute"
           bottom="20%"

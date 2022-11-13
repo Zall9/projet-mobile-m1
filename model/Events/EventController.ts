@@ -23,7 +23,8 @@ export class EventController {
     }
 
     static getImage(eventInfos: IEvent): string {
-        return eventInfos.image === "unknown" ? Constants.UNKNOWN_PATH : `${Constants.IMAGE_PATH}event/${eventInfos.image}${Constants.IMAGE_EXT}`;
+        console.log(`${Constants.IMAGE_PATH}event/${eventInfos.image}${Constants.IMAGE_EXT}`);
+        return eventInfos.image === "unknown" ? Constants.UNKNOWN_PATH : `${Constants.IMAGE_PATH}events/${eventInfos.image}${Constants.IMAGE_EXT}`;
     }
 
     static pickRandomEvent(): IEvent {
