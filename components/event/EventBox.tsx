@@ -37,7 +37,7 @@ function positionFromDirection(direction: Direction): {
 }
 
 function handler(event: IEvent, setEvent: Dispatch<SetStateAction<IEvent>>, output: IOutput) : void {
-    setEvent(EventController.getById(output.nom));
+    setEvent(EventController.getById(output.nextEvent));
 }
 
 export default function EventBox(props: {

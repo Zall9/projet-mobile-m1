@@ -7,20 +7,20 @@ export const eventInfos: IEvent = {
     image: "mage_00",
     sorties: [
         {
-            nom: "Vers le haut",
-            direction: Direction.up
+            direction: Direction.up,
+            nextEvent: "unknown"
         },
         {
-            nom: "Vers le bas",
-            direction: Direction.down
+            direction: Direction.down,
+            nextEvent: "unknown"
         },
         {
-            nom: "Vers la gauche",
-            direction: Direction.left
+            direction: Direction.left,
+            nextEvent: "unknown"
         },
         {
-            nom: "Vers la droite",
-            direction: Direction.right
+            direction: Direction.right,
+            nextEvent: "unknown"
         }],
     classe: "Mage"
 }

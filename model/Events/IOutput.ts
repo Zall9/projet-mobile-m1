@@ -1,6 +1,6 @@
 export abstract class IOutput {
-    abstract nom: string;
     abstract direction: Direction;
+    abstract nextEvent: string;
     // TODO préciser quoi mettre de plus dans l'output
 }
 
