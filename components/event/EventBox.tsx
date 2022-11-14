@@ -3,12 +3,11 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpIcon,
-  IconProps,
+
 } from "@chakra-ui/icons";
-import { Box, ComponentWithAs, Icon, IconButton, Text } from "@chakra-ui/react";
+import { Box, IconButton, Text } from "@chakra-ui/react";
 import React, {
   Dispatch,
-  MouseEventHandler,
   ReactElement,
   SetStateAction,
 } from "react";
@@ -37,12 +36,15 @@ function positionFromDirection(direction: Direction): {
   }
 }
 
+function handler(event: IEvent, setEvent: Dispatch<SetStateAction<IEvent>>, output: IOutput) : void {
+    setEvent(EventController.getById(output.nom));
+}
+
 export default function EventBox(props: {
   event: IEvent;
   setEvent: Dispatch<SetStateAction<IEvent>>;
 }) {
   const event = props.event;
-  const handler: any = (event: MouseEvent, direction: Direction) => {};
   const stringToArrow: { [key: string]: ReactElement } = {
     up: <ArrowUpIcon />,
     down: <ArrowDownIcon />,
@@ -64,7 +66,7 @@ export default function EventBox(props: {
           backgroundPosition: "center",
         }}
       >
-        {event.sorties.map((output: IOutput, index: number) => {
+        {event.sorties.map((output: IOutput) => {
           return (
             <IconButton
               aria-label=""
@@ -76,7 +78,7 @@ export default function EventBox(props: {
                 ...positionFromDirection(output.direction),
               }}
               icon={stringToArrow[Direction[output.direction]]}
-              onClick={handler(event, Direction[output.direction])}
+              onClick={() => handler(event, props.setEvent, output)}
             />
           );
         })}
