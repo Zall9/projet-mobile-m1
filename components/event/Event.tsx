@@ -1,11 +1,14 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import EventBox from "./EventBox";
 import Inventory from "../inventory/Inventory";
-import {IEvent} from "../../model/Events/IEvent";
-export default function Event(props: { event: IEvent; }) {
-  const [selectedOutput, setSelectedOutput] = useState({});
+import { IEvent } from "../../model/Events/IEvent";
+export default function Event(props: {
+  event: IEvent;
+  setEvent: Dispatch<SetStateAction<IEvent>>;
+}) {
   const event = props.event;
+  const setEvent = props.setEvent;
   return (
     <>
       <Box
@@ -27,7 +30,7 @@ export default function Event(props: { event: IEvent; }) {
             alignItems: "center",
           }}
         >
-          <EventBox event={event}></EventBox>
+          <EventBox event={event} setEvent={setEvent}></EventBox>
         </SimpleGrid>
       </Box>
       <Inventory></Inventory>
