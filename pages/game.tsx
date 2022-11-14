@@ -3,17 +3,20 @@ import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import Event from "../components/event/Event";
 import { ClassController } from "../model/Classes/ClassController";
 import {EventController, getStaticPropsEvent} from "../model/Events/EventController";
+import {getStaticPropsMinigame, MinigameController} from "../model/Minigames/MinigameController";
 
 export async function getStaticProps() {
   return {
     props: {
-      prepareEventLists: await getStaticPropsEvent()
+      prepareEventLists: await getStaticPropsEvent(),
+      prepareMinigameLists: await getStaticPropsMinigame()
     }
   }
 }
 
-export default function game({prepareEventLists}: {prepareEventLists: string[]}) {
+export default function game({prepareEventLists, prepareMinigameLists}: {prepareEventLists: string[], prepareMinigameLists: string[]}) {
   EventController.init(prepareEventLists);
+  MinigameController.init(prepareMinigameLists);
   const defaultClass = ClassController.getById("Unknown");
   const [playerClass, setPlayerClass] = useState(defaultClass);
   const [currentEvent, setCurrentEvent] = useState(EventController.getById('Unknown'));
