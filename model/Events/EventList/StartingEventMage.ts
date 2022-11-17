@@ -8,8 +8,8 @@ export const eventInfos: IEvent = {
     sorties: [
         {
             direction: Direction.up,
-            nextEvent: "StartingEventMage",
-            willMinigame: true
+            nextEvent: "ForestTent",
+            willMinigame: false
         },
         {
             direction: Direction.down,
