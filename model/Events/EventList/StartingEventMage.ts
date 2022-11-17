@@ -8,19 +8,23 @@ export const eventInfos: IEvent = {
     sorties: [
         {
             direction: Direction.up,
-            nextEvent: "unknown"
+            nextEvent: "StartingEventMage",
+            willMinigame: true
         },
         {
             direction: Direction.down,
-            nextEvent: "unknown"
+            nextEvent: "StartingEventMage",
+            willMinigame: false
         },
         {
             direction: Direction.left,
-            nextEvent: "unknown"
+            nextEvent: "StartingEventMage",
+            willMinigame: false
         },
         {
             direction: Direction.right,
-            nextEvent: "unknown"
+            nextEvent: "StartingEventMage",
+            willMinigame: false
         }],
     classe: "Mage"
 }
