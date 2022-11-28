@@ -1,4 +1,4 @@
-import {CaseTemplate, GridMinigame, IMinigame, SetGridMinigame} from "../IMinigame";
+import {CaseTemplate, GridMinigame, IMinigame, SetGridMinigame, SetUpdateGrid} from "../IMinigame";
 import {Direction} from "../../Events/IOutput";
 import {Grid, GridItem} from "@chakra-ui/react";
 import {Panier} from "../../../components/icons/Panier";
@@ -15,6 +15,8 @@ export class PanierCaseTemplate implements CaseTemplate {
 }
 
 export const minigameInfos: IMinigame = {
+    setUpdateGrid: () => null,
+    setLogicGrid: () => null,
     nbRow: NBROW,
     nbCol: 5,
     score: 0,
@@ -49,13 +51,24 @@ export const minigameInfos: IMinigame = {
             }
         </Grid>
     },
-    init(logicGrid: GridMinigame, setLogicGrid: SetGridMinigame): void {
+    init(logicGrid: GridMinigame, setUpdateGrid: SetUpdateGrid, setLogicGrid: SetGridMinigame): void {
         for (let i = 0; i < 3; i++) {
             spawnItems(logicGrid, this);
         }
+        this.setUpdateGrid = setUpdateGrid;
+        this.setLogicGrid = setLogicGrid;
     },
-    update(logicGrid: GridMinigame, setLogicGrid: SetGridMinigame): void {
-        const logicGridCopy = new Map(logicGrid);
+    update(logicGrid: GridMinigame): void {
+        this.setLogicGrid(logicGrid);
+        this.setUpdateGrid(true);
+    },
+    caseTemplateCreate: () => new PanierCaseTemplate(),
+    playerInput(input: string, logicGrid: GridMinigame): void {
+        this.evolve(logicGrid);
+        this.setUpdateGrid(true);
+    },
+    evolve(logicGrid: GridMinigame): void {
+        const logicGridCopy = new Map(JSON.parse(JSON.stringify(Array.from(logicGrid)))) as GridMinigame;
         logicGrid.forEach((row, i) => {
             row.forEach((cell, j) => {
                 let realCell = cell as PanierCaseTemplate;
@@ -63,22 +76,20 @@ export const minigameInfos: IMinigame = {
                     if (j === this.nbRow - 1) {
                         this.score += this.player.position.y === i ? 1 : -1;
                     } else {
-                        (logicGrid.get(i) as PanierCaseTemplate[])[j + 1].hasFruit = true;
+                        (logicGridCopy.get(i) as PanierCaseTemplate[])[j + 1].hasFruit = true;
+                        (logicGridCopy.get(i) as PanierCaseTemplate[])[j].hasFruit = false;
                     }
                     realCell.hasFruit = false;
                 }
             })
         })
         Math.random() < 1 / 3 ? spawnItems(logicGrid, this) : null;
-        setLogicGrid(logicGridCopy);
-    },
-    caseTemplateCreate: () => new PanierCaseTemplate(),
+        this.update(logicGridCopy);
+    }
 };
 
 function spawnItems(logicGrid: GridMinigame, minigame: IMinigame) {
     const letterDrawn = String.fromCharCode(65 + Math.floor(Math.random() * minigame.nbCol));
     const caseDrawn = (logicGrid.get(letterDrawn) as PanierCaseTemplate[])[0];
-    console.log(logicGrid)
     caseDrawn.hasFruit = true;
-    console.log(logicGrid)
 }

@@ -1,5 +1,5 @@
-import {CaseTemplate, GridMinigame, IMinigame, SetGridMinigame} from "../../model/Minigames/IMinigame";
-import {Box} from "@chakra-ui/react";
+import {CaseTemplate, GridMinigame, IMinigame} from "../../model/Minigames/IMinigame";
+import {Box, Button} from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 
 export default function MinigameComponent(props: { minigame: IMinigame }) {
@@ -9,20 +9,24 @@ export default function MinigameComponent(props: { minigame: IMinigame }) {
         rowTemplate.push(props.minigame.caseTemplateCreate());
     }
     for (let i = 0; i < props.minigame.nbCol; i++) {
-        logicGrid.set(String.fromCharCode(65 + i), rowTemplate.slice(0, rowTemplate.length))
+        logicGrid.set(String.fromCharCode(65 + i), JSON.parse(JSON.stringify(rowTemplate)));
     }
-    let setLogicGrid: SetGridMinigame;
-    [logicGrid, setLogicGrid] = useState(logicGrid);
+    let [updateGrid, setUpdateGrid] = useState(false);
+    let [logicGridToUpdate, setLogicGrid] = useState(logicGrid);
     useEffect(() => {
-            console.log(logicGrid);
-            props.minigame.init(logicGrid, setLogicGrid);
-            setLogicGrid(logicGrid)
+            props.minigame.init(logicGrid, setUpdateGrid, setLogicGrid);
         },
         []);
     useEffect(() => {
-        props.minigame.ViewGrid(logicGrid)
-    }, [logicGrid]);
+        if (updateGrid) {
+            props.minigame.update(logicGridToUpdate)
+            setUpdateGrid(false);
+        }
+    }, [updateGrid]);
     return <Box id="Canvas">
-        {props.minigame.ViewGrid(logicGrid)}
+        <Box id="Grid">
+            {props.minigame.ViewGrid(logicGridToUpdate)}
+        </Box>
+        <Button onClick={() => props.minigame.playerInput("test", logicGridToUpdate)}/>
     </Box>
 }

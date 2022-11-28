@@ -1,8 +1,27 @@
-import {IMinigame} from "../IMinigame";
+import {CaseTemplate, IMinigame, MinigamePlayer} from "../IMinigame";
+import React from "react";
 
 const minigameInfos: IMinigame = {
-    nbCol: 0, nbRow: 0, score: 0, init(): void {
-    }, update(): void {
+    setLogicGrid(): void {
     },
-    ViewGrid: <> </>
+    evolve(): void {
+    },
+    setUpdateGrid: () => null,
+    ViewGrid(): React.ReactElement {
+        return null as unknown as React.ReactElement;
+    },
+    caseTemplateCreate(): CaseTemplate {
+        return null as unknown as CaseTemplate;
+    },
+    player: null as unknown as MinigamePlayer,
+    playerInput(): void {
+    },
+    nbCol: 0,
+    nbRow: 0,
+    score: 0,
+
+    init(): void {
+    },
+    update(): void {
+    }
 };
