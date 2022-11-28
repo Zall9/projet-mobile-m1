@@ -77,13 +77,13 @@ export const minigameInfos: IMinigame = {
                         this.score += this.player.position.y === i ? 1 : -1;
                     } else {
                         (logicGridCopy.get(i) as PanierCaseTemplate[])[j + 1].hasFruit = true;
-                        (logicGridCopy.get(i) as PanierCaseTemplate[])[j].hasFruit = false;
                     }
+                    (logicGridCopy.get(i) as PanierCaseTemplate[])[j].hasFruit = false;
                     realCell.hasFruit = false;
                 }
             })
         })
-        Math.random() < 1 / 3 ? spawnItems(logicGrid, this) : null;
+        Math.random() < 1 / 3 ? spawnItems(logicGridCopy, this) : null;
         this.update(logicGridCopy);
     }
 };
