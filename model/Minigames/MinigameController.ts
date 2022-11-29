@@ -13,9 +13,11 @@ export class MinigameController {
     static init(initializer: string[]) {
         minigameIdList = initializer.slice();
     }
+
     static getById(id: string): IMinigame {
-        return (minigameIdList.includes(id) ? require(`./MinigameList/${id}.tsx`) : require(`./MinigameList/Unknown.tsx`)).minigameInfos as IMinigame;
+        return (minigameIdList.includes(id) ? require(`./MinigameList/${id}tsx`) : require(`./MinigameList/Unknown.tsx`)).minigameInfos as IMinigame;
     }
+
     static pickRandomMinigame(): IMinigame {
         const validMinigames = minigameIdList.filter((v) => v !== "Unknown");
         return this.getById(validMinigames[Math.floor(Math.random() * validMinigames.length)]);

@@ -1,8 +1,11 @@
 import {CaseTemplate, GridMinigame, IMinigame} from "../../model/Minigames/IMinigame";
 import {Box, Button} from "@chakra-ui/react";
 import {useEffect, useState} from "react";
+import {IEvent} from "../../model/Events/IEvent";
 
-export default function MinigameComponent(props: { minigame: IMinigame }) {
+// TODO quand le jeu est terminé, se remettre sur le prochain event
+
+export default function MinigameComponent(props: { minigame: IMinigame, nextEvent: IEvent }) {
     let logicGrid: GridMinigame = new Map();
     let rowTemplate: CaseTemplate[] = [];
     for (let i = 0; i < props.minigame.nbRow; i++) {

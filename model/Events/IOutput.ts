@@ -12,3 +12,8 @@ export enum Direction {
     left,
     right
 }
+
+export const Unknown: IOutput = {
+    nextEvent: "", willMinigame: false,
+    direction: Direction.up
+}

@@ -1,7 +1,8 @@
-import {getStaticPropsMinigame,} from "../model/Minigames/MinigameController";
+import {getStaticPropsMinigame, MinigameController,} from "../model/Minigames/MinigameController";
 import {Box, Grid, GridItem, Text} from "@chakra-ui/react";
 import MinigameComponent from "../components/minigame/MinigameComponent";
-import {minigameInfos} from "../model/Minigames/MinigameList/Panier";
+import {IMinigame} from "../model/Minigames/IMinigame";
+import {IEvent} from "../model/Events/IEvent";
 
 export async function getStaticProps() {
     return {
@@ -11,13 +12,8 @@ export async function getStaticProps() {
     };
 }
 
-export default function minigame({
-                                     prepareMinigameLists,
-                                 }: {
-    prepareMinigameLists: string[];
-}) {
-    // MinigameController.init(prepareMinigameLists);
-
+export default function minigame({prepareMinigameLists}: { prepareMinigameLists: string[]; }, state: { minigame: IMinigame, nextEvent: IEvent }) {
+    MinigameController.init(prepareMinigameLists);
     return (
         <Grid templateColumns="repeat(8,1fr)" gap={6}>
             <GridItem colSpan={1}/>
@@ -27,7 +23,7 @@ export default function minigame({
             <GridItem colSpan={1}/>
             <GridItem rowSpan={6} colSpan={1}/>
             <GridItem rowSpan={6} colSpan={6}><Box h="10" bg="blue">
-                <MinigameComponent minigame={minigameInfos}/>
+                <MinigameComponent minigame={state.minigame} nextEvent={state.nextEvent}/>
             </Box></GridItem>
         </Grid>
     );
