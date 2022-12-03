@@ -1,5 +1,5 @@
 import { Box, SimpleGrid } from "@chakra-ui/react";
-import React, { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import EventBox from "./EventBox";
 import Inventory from "../inventory/Inventory";
 import { IEvent } from "../../model/Events/IEvent";
