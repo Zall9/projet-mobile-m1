@@ -1,7 +1,7 @@
 import {CaseTemplate, IMinigame, MinigamePlayer} from "../IMinigame";
 import React from "react";
 
-const minigameInfos: IMinigame = {
+export const minigameInfos: IMinigame = {
     setLogicGrid(): void {
     },
     evolve(): void {

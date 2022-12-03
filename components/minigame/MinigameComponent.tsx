@@ -2,6 +2,7 @@ import {CaseTemplate, GridMinigame, IMinigame,} from "../../model/Minigames/IMin
 import {Box, Button} from "@chakra-ui/react";
 import {useEffect, useState} from "react";
 import {MinigameController} from "../../model/Minigames/MinigameController";
+import {minigameInfos} from "../../model/Minigames/MinigameList/Unknown";
 
 // TODO quand le jeu est terminé, se remettre sur le prochain event
 
@@ -9,24 +10,29 @@ export default function MinigameComponent() {
     let logicGrid: GridMinigame = new Map();
     let miniGameId: string;
 
-    let minigame!: IMinigame;
+    let [minigame, setMinigame] = useState<IMinigame>(minigameInfos);
+    let [reset, sr] = useState(false);
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            miniGameId = localStorage.getItem("miniGameId") as string;
-            minigame = miniGameId === "random" ? MinigameController.pickRandomMinigame() : MinigameController.getById(miniGameId);
-            let rowTemplate: CaseTemplate[] = [];
-            for (let i = 0; i < minigame.nbRow; i++) {
-                rowTemplate.push(minigame.caseTemplateCreate());
-            }
-            for (let i = 0; i < minigame.nbCol; i++) {
-                logicGrid.set(
-                    String.fromCharCode(65 + i),
-                    JSON.parse(JSON.stringify(rowTemplate))
-                );
-            }
-            return minigame.init(logicGrid, setUpdateGrid, setLogicGrid);
+        miniGameId = localStorage.getItem("miniGameId") as string;
+        setMinigame(miniGameId === "random" ? MinigameController.pickRandomMinigame() : MinigameController.getById(miniGameId));
+        if (minigame === minigameInfos) {
+            sr(!reset);
+            return;
         }
-    }, []);
+        let rowTemplate: CaseTemplate[] = [];
+        for (let i = 0; i < minigame.nbRow; i++) {
+            rowTemplate.push(minigame.caseTemplateCreate());
+        }
+        for (let i = 0; i < minigame.nbCol; i++) {
+            logicGrid.set(
+                String.fromCharCode(65 + i),
+                JSON.parse(JSON.stringify(rowTemplate))
+            );
+        }
+        minigame.init(logicGrid, setUpdateGrid, setLogicGrid);
+        setLogicGrid(logicGrid);
+        setUpdateGrid(true);
+    }, [reset]);
 
     let [updateGrid, setUpdateGrid] = useState(false);
     let [logicGridToUpdate, setLogicGrid] = useState(logicGrid);
@@ -38,7 +44,7 @@ export default function MinigameComponent() {
     }, [updateGrid]);
     return (
         <>
-            {minigame ? (
+            {minigame && logicGridToUpdate.size ? (
                 <Box id="Canvas">
                     <Box id="Grid">{minigame.ViewGrid(logicGridToUpdate)}</Box>
                     <Button
