@@ -19,6 +19,7 @@ export const minigameInfos: IMinigame = {
     nbCol: 0,
     nbRow: 0,
     score: 0,
+    scoreTresh: 0,
 
     init(): void {
     },

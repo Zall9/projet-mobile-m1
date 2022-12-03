@@ -6,6 +6,7 @@ export abstract class IMinigame {
     abstract nbCol: number;
     abstract player: MinigamePlayer;
     score = 0;
+    scoreTresh = 0;
     abstract setUpdateGrid: SetUpdateGrid;
     abstract setLogicGrid: SetGridMinigame;
     /**
