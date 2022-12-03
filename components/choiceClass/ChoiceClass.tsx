@@ -1,13 +1,17 @@
 import { SimpleGrid } from "@chakra-ui/react";
 import ChoiceBox from "./ChoiceBox";
 import DescriptionAndSubmitBox from "./DescriptionAndSubmitBox";
-import {SetStateAction, useState} from "react";
+import { SetStateAction, useState } from "react";
 import { ClassController } from "../../model/Classes/ClassController";
-import {IClass} from "../../model/Classes/IClass";
+import { IClass } from "../../model/Classes/IClass";
 
-export default function choiceClass(props: { RootSetPlayerClass: (classe: SetStateAction<IClass>) => void; }) {
+export default function choiceClass(props: {
+  RootSetPlayerClass: (classe: SetStateAction<IClass>) => void;
+}) {
   const RootSetPlayerClass = props.RootSetPlayerClass;
-  const [selectedClass, setSelectedClass] = useState(ClassController.getById("Unknown"));
+  const [selectedClass, setSelectedClass] = useState(
+    ClassController.getById("Unknown")
+  );
   const [description, setDescription] = useState("");
 
   function handleChoice(classe: SetStateAction<IClass>) {
@@ -19,12 +23,13 @@ export default function choiceClass(props: { RootSetPlayerClass: (classe: SetSta
   return (
     <>
       <SimpleGrid columns={3} spacing="5px" h="100%">
-        {ClassController.getClassesByIds(["Mage", "Thief", "Warrior"])
-          .map((classe) => (
+        {ClassController.getClassesByIds(["Mage", "Thief", "Warrior"]).map(
+          (classe) => (
             <>
               <ChoiceBox classe={classe} handleChoice={handleChoice} />
             </>
-          ))}
+          )
+        )}
         <DescriptionAndSubmitBox
           description={description}
           selectedClass={selectedClass}

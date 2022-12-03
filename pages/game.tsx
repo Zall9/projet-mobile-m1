@@ -6,35 +6,47 @@ import {
   EventController,
   getStaticPropsEvent,
 } from "../model/Events/EventController";
-import {
-  getStaticPropsMinigame,
-  MinigameController,
-} from "../model/Minigames/MinigameController";
 
 export async function getStaticProps() {
   return {
     props: {
       prepareEventLists: await getStaticPropsEvent(),
-      prepareMinigameLists: await getStaticPropsMinigame(),
     },
   };
 }
 
 export default function game({
   prepareEventLists,
-  prepareMinigameLists,
 }: {
   prepareEventLists: string[];
-  prepareMinigameLists: string[];
 }) {
   EventController.init(prepareEventLists);
-  MinigameController.init(prepareMinigameLists);
+  let [hasBeenUseEffected, setHasBeenUseEffected] = useState(false);
   const defaultClass = ClassController.getById("Unknown");
-  const [playerClass, setPlayerClass] = useState(defaultClass);
+  const [playerClass, setPlayerClass] = useState(
+    ClassController.getById("Unknown")
+  );
   const [currentEvent, setCurrentEvent] = useState(
     EventController.getById("Unknown")
   );
+
   const step = useRef(0);
+
+  useEffect(() => {
+    localStorage.setItem("username", "BANANA");
+    localStorage.getItem("score") ?? localStorage.setItem("score", "0");
+    if (localStorage.getItem("classId")) {
+      setPlayerClass(
+        ClassController.getById(localStorage.getItem("classId") as string)
+      );
+      setCurrentEvent(
+        EventController.getById(localStorage.getItem("nextEvent") as string)
+      );
+      localStorage.removeItem("miniGameId");
+      localStorage.removeItem("nextEvent");
+    }
+    setHasBeenUseEffected(true);
+  }, []);
 
   useEffect(() => {
     if (playerClass && step.current) {
@@ -42,14 +54,19 @@ export default function game({
     } else {
       setCurrentEvent(EventController.getByClassRequirement(playerClass.nom));
     }
+    setHasBeenUseEffected(true);
   }, [playerClass]);
 
   return (
     <>
-      {playerClass == defaultClass ? (
-        <ChoiceClass RootSetPlayerClass={setPlayerClass}></ChoiceClass>
+      {hasBeenUseEffected ? (
+        playerClass == defaultClass ? (
+          <ChoiceClass RootSetPlayerClass={setPlayerClass}></ChoiceClass>
+        ) : (
+          <Event setEvent={setCurrentEvent} event={currentEvent}></Event>
+        )
       ) : (
-        <Event setEvent={setCurrentEvent} event={currentEvent}></Event>
+        <></>
       )}
     </>
   );
