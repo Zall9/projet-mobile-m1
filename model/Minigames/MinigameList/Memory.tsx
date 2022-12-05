@@ -41,10 +41,10 @@ export const minigameInfos: IMinigame = {
     hasLeftRightInputs: false,
     setUpdateGrid: () => null,
     setLogicGrid: () => null,
-    nbRow: 9,
-    nbCol: 8,
+    nbRow: 6,
+    nbCol: 4,
     score: 0,
-    scoreTresh: (8 * 9) / 2,
+    scoreTresh: (6 * 4) / 2,
     player: {
         position: {
             x: 0,
