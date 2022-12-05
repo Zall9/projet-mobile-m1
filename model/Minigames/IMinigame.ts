@@ -17,6 +17,7 @@ export abstract class IMinigame {
      * Grid view of the game
      */
     abstract ViewGrid: (logicGrid: GridMinigame) => ReactElement;
+    abstract hasLeftRightInputs: boolean;
 
     /**
      * Initialize the minigame

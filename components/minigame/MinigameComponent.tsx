@@ -68,19 +68,21 @@ export default function MinigameComponent() {
     return (
         <>
             {minigame && logicGridToUpdate.size ? (
-                <Box id="Canvas">
-                    <Box id="Grid">{minigame.ViewGrid(logicGridToUpdate)}</Box>
-                    <IconButton
+                <>
+                    <Box id="Canvas">
+                        <Box id="Grid">{minigame.ViewGrid(logicGridToUpdate)}</Box>
+                    </Box>
+                    {minigame.hasLeftRightInputs ? (<><IconButton
                         aria-label="left"
                         icon={<ArrowLeftIcon/>}
-                        onClick={() => minigame.playerInput("left")}
+                        onClick={() => minigame.playerInput("left", logicGrid)}
                     />
-                    <IconButton
-                        aria-label="right"
-                        icon={<ArrowRightIcon/>}
-                        onClick={() => minigame.playerInput("right")}
-                    />
-                </Box>
+                        <IconButton
+                            aria-label="right"
+                            icon={<ArrowRightIcon/>}
+                            onClick={() => minigame.playerInput("right", logicGrid)}
+                        /> </>) : (<></>)}
+                </>
             ) : (
                 <></>
             )}

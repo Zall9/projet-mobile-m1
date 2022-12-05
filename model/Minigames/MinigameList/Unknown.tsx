@@ -2,6 +2,7 @@ import {CaseTemplate, IMinigame, MinigamePlayer} from "../IMinigame";
 import React from "react";
 
 export const minigameInfos: IMinigame = {
+    hasLeftRightInputs: false,
     setLogicGrid(): void {
     },
     evolve(): void {
