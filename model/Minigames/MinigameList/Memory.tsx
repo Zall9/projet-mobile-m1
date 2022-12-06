@@ -114,7 +114,6 @@ export const minigameInfos: IMinigame = {
           <GridItem
             colSpan={1}
             rowSpan={1}
-            backgroundColor="gray.500"
             w="42px"
             h="42px"
             onClick={() =>

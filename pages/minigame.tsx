@@ -23,17 +23,11 @@ export default function minigame(
   return (
     <Grid templateColumns="repeat(8,1fr)" gap={6}>
       <GridItem colSpan={1} />
-      <GridItem rowSpan={2} colSpan={6}>
-        <Box h="10" bg="orange">
-          <Text>test</Text>
-        </Box>
-      </GridItem>
+      <GridItem rowSpan={2} colSpan={6}></GridItem>
       <GridItem colSpan={1} />
       <GridItem rowSpan={6} colSpan={1} />
       <GridItem rowSpan={6} colSpan={6}>
-        <Box h="10" bg="blue">
-          <MinigameComponent />
-        </Box>
+        <MinigameComponent />
       </GridItem>
     </Grid>
   );
