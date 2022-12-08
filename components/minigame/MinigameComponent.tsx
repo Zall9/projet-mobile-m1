@@ -45,7 +45,7 @@ export default function MinigameComponent() {
     useEffect(() => {
         //@ts-ignore
         const myInterval = setInterval(() => {
-            minigame.evolve();
+            minigame.evolve(logicGridToUpdate);
         }, minigame.refreshInterval);
         if (updateGrid) {
             if (minigame.score >= minigame.scoreTresh) {
@@ -63,7 +63,6 @@ export default function MinigameComponent() {
         //@ts-ignore
         return () => clearInterval(myInterval);
     }, [updateGrid]);
-    console.log(minigame.score);
     return (
         <>
             {minigame && logicGridToUpdate.size ? (
@@ -71,7 +70,7 @@ export default function MinigameComponent() {
                     <Box id="Canvas">
                         <Box id="Grid">{minigame.ViewGrid(logicGridToUpdate)}</Box>
                     </Box>
-                    {minigame.Controls()}
+                    {minigame.Controls(logicGridToUpdate)}
                 </>
             ) : (
                 <></>

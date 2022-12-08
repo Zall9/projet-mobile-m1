@@ -133,7 +133,6 @@ export const minigameInfos: IMinigame = {
         Math.random() < 1 / 3 ? spawnItems(logicGridCopy, this) : null;
         this.update(logicGridCopy);
     },
-    hasLeftRightInputs: true
 };
 
 function spawnItems(logicGrid: GridMinigame, minigame: IMinigame) {

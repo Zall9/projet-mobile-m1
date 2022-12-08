@@ -1,20 +1,20 @@
 import {CaseTemplate, GridMinigame, IMinigame, SetGridMinigame, SetUpdateGrid,} from "../IMinigame";
 import {Grid, GridItem} from "@chakra-ui/react";
 import {
-  BackImage,
-  Memory1,
-  Memory10,
-  Memory11,
-  Memory12,
-  Memory2,
-  Memory3,
-  Memory4,
-  Memory5,
-  Memory6,
-  Memory7,
-  Memory8,
-  Memory9,
-} from "../../../components/icons/BackImage";
+    BackIcon,
+    Memory1,
+    Memory10,
+    Memory11,
+    Memory12,
+    Memory2,
+    Memory3,
+    Memory4,
+    Memory5,
+    Memory6,
+    Memory7,
+    Memory8,
+    Memory9,
+} from "../../../components/icons/MemoryIcons";
 import {ReactElement} from "react";
 
 export class MemoryCaseTemplate implements CaseTemplate {
@@ -44,7 +44,7 @@ const imageList: ReactElement[] = [
     <Memory11 boxSize={12}/>,
     <Memory12 boxSize={12}/>,
 ];
-const backImage: ReactElement = <BackImage boxSize={12}/>;
+const backImage: ReactElement = <BackIcon boxSize={12}/>;
 
 function getReturnedCells(logicGrid: GridMinigame) {
     const rc: MemoryCaseTemplate[] = [];
@@ -70,7 +70,6 @@ export const minigameInfos: IMinigame = {
         return <></>;
     },
     refreshInterval: 99999999999999,
-    hasLeftRightInputs: false,
     setUpdateGrid: () => null,
     setLogicGrid: () => null,
     nbRow: 6,
