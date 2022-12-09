@@ -46,3 +46,4 @@ next-env.d.ts
 /.eslintrc.json
 
 /model/ServerSideDB/config.ts
+/model/ServerSideDB/config.json
