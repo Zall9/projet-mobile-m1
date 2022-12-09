@@ -2,7 +2,7 @@ import {
   getStaticPropsMinigame,
   MinigameController,
 } from "../model/Minigames/MinigameController";
-import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Center, Grid, GridItem, Text } from "@chakra-ui/react";
 import MinigameComponent from "../components/minigame/MinigameComponent";
 import { IMinigame } from "../model/Minigames/IMinigame";
 import { IEvent } from "../model/Events/IEvent";

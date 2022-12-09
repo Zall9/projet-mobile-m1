@@ -1,5 +1,11 @@
-import {CaseTemplate, GridMinigame, IMinigame, SetGridMinigame, SetUpdateGrid,} from "../IMinigame";
-import {Grid, GridItem} from "@chakra-ui/react";
+import {
+    CaseTemplate,
+    GridMinigame,
+    IMinigame,
+    SetGridMinigame,
+    SetUpdateGrid,
+} from "../IMinigame";
+import {Center, Grid, GridItem} from "@chakra-ui/react";
 import {
     BackIcon,
     Memory1,
@@ -99,6 +105,7 @@ export const minigameInfos: IMinigame = {
             }
         }
         return (
+
             <Grid
                 templateColumns={`repeat(${this.nbCol},auto)`}
                 sx={{
@@ -107,19 +114,22 @@ export const minigameInfos: IMinigame = {
                 }}
             >
                 {parameters.map((v, index) => (
-                    <GridItem
-                        colSpan={1}
-                        rowSpan={1}
-                        w="42px"
-                        h="42px"
-                        onClick={() =>
-                            this.playerInput(transformCoord(index, this.nbCol), logicGrid)
-                        }
-                    >
-                        {v}
-                    </GridItem>
+                    <Center>
+                        <GridItem
+                            colSpan={1}
+                            rowSpan={1}
+                            w="42px"
+                            h="42px"
+                            onClick={() =>
+                                this.playerInput(transformCoord(index, this.nbCol), logicGrid)
+                            }
+                        >
+                            {v}
+                        </GridItem>
+                    </Center>
                 ))}
             </Grid>
+
         );
     },
     init(
@@ -180,5 +190,5 @@ export const minigameInfos: IMinigame = {
         this.setUpdateGrid(true);
     },
     evolve(): void {
-    }
+    },
 };
