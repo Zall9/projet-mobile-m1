@@ -16,6 +16,14 @@ export var breakpoints = {
     xl: "850px",
     "2xl": "1800px",
   },
+  playButtonBoxSize: {
+    base: 124,
+    sm: 150,
+    md: 200,
+    lg: 250,
+    xl: 300,
+    "2xl": 400,
+  },
 };
 
 export var colors = {
