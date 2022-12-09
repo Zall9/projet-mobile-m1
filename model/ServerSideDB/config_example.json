@@ -1,0 +1,9 @@
+{
+  "dbURL": "YOUR FIREBASE DB URL",
+  "apiKey": "YOUR FIREBASE API KEY",
+  "authDomain": "YOUR FIREBASE AUTH DOMAIN",
+  "projectId": "YOUR FIREBASE PROJECT ID",
+  "bucket": "YOUR FIREBASE BUCKET",
+  "senderId": "YOUR FIREBASE SENDER ID",
+  "appId": "YOUR FIREBASE APP ID"
+}

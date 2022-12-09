@@ -1,11 +1,10 @@
 import {
   Box,
-  Button,
   Center,
   IconButton,
+  keyframes,
   SimpleGrid,
   Text,
-  keyframes,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { PlayButton } from "../components/icons/playButton.svg";
@@ -90,7 +89,7 @@ export default function Home() {
               </Text>
             </Box>
           </Link>
-          <Link href="/leaderBoard">
+          <Link href="/leaderboard">
             <Box
               sx={{
                 position: "relative",

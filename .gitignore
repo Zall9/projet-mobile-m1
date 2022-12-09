@@ -44,3 +44,5 @@ next-env.d.ts
 /pages/api/hello.js
 /pages/index.js
 /.eslintrc.json
+
+/model/ServerSideDB/config.ts
