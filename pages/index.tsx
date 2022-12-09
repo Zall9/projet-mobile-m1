@@ -80,7 +80,7 @@ export default function Home() {
                 sx={{
                   position: "absolute",
                   top: "50vh",
-                  left: "60%",
+                  left: "65%",
                   zIndex: 1,
                   color: "white",
                 }}
