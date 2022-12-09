@@ -22,6 +22,7 @@ import {
   Memory9,
 } from "../../../components/icons/MemoryIcons";
 import { ReactElement } from "react";
+import Ennemy from "../../../components/event/ennemy";
 
 export class MemoryCaseTemplate implements CaseTemplate {
   isReturned: boolean;
@@ -80,15 +81,6 @@ export const minigameInfos: IMinigame = {
   setLogicGrid: () => null,
   nbRow: 6,
   nbCol: 4,
-  score: 0,
-  scoreTresh: (6 * 4) / 2,
-  player: {
-    position: {
-      x: 0,
-      y: "A",
-    },
-    direction: [],
-  },
   ViewGrid(logicGrid: GridMinigame) {
     const cols = Array.from(logicGrid.keys());
     const parameters = [];
@@ -105,7 +97,12 @@ export const minigameInfos: IMinigame = {
       }
     }
     return (
-      <Grid gap={6} templateColumns={`repeat(${this.nbCol},auto)`}>
+      <Grid
+        gap={6}
+        h={"min(70vh,70vw)"}
+        w={"min(80vh,80vw)"}
+        templateColumns={`repeat(${this.nbCol},auto)`}
+      >
         {parameters.map((v, index) => (
           <Center>
             <GridItem
@@ -121,8 +118,22 @@ export const minigameInfos: IMinigame = {
             </GridItem>
           </Center>
         ))}
+        <GridItem colSpan={1} />
+        <GridItem colSpan={this.nbCol - 2}>
+          <Ennemy name={"bonefire"}></Ennemy>
+        </GridItem>
+        <GridItem colSpan={1} />
       </Grid>
     );
+  },
+  score: 0,
+  scoreTresh: (6 * 4) / 2,
+  player: {
+    position: {
+      x: 0,
+      y: "A",
+    },
+    direction: [],
   },
   init(
     logicGrid: GridMinigame,
