@@ -17,8 +17,7 @@ export default function Event(props: {
           justifyContent: "center",
           flexDirection: "column",
           alignItems: "center",
-          height: "90vh",
-          width: "100%",
+          height: "100vh",
         }}
       >
         <SimpleGrid
@@ -33,7 +32,6 @@ export default function Event(props: {
           <EventBox event={event} setEvent={setEvent}></EventBox>
         </SimpleGrid>
       </Box>
-      <Inventory></Inventory>
     </>
   );
 }

@@ -98,7 +98,8 @@ export default function EventBox(
           justifyContent: "center",
           borderColor: "black",
           borderWidth: "1px",
-          height: "80vh",
+          height: "90vh",
+            width: "75vw !important",
           backgroundImage: `url(${EventController.getImage(event)})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -123,6 +124,8 @@ export default function EventBox(
           );
         })}
           <section style={{
+            position: "absolute",
+            bottom: "10%",
               display:"flex",
               justifyContent:"center",
               alignItems:"center",
@@ -151,9 +154,6 @@ export default function EventBox(
                 transition: "all 0.5s ease-in-out",
                 textAlign: "center",
                 letterSpacing:" 0.2em",
-
-
-
             }}
         >
           {event.nom}
