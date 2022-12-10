@@ -51,15 +51,17 @@ export class Leaderboard {
    * @param page
    */
   public getLeaderboard(page: number): ScoreRow[] {
-    const lookedPage =
-      Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 1 < page
-        ? 1
-        : page < 1
-        ? 1
-        : page;
+    const lookedPage = this.getMaxPage() < page || page < 1 ? 1 : page;
     return this.datas.slice(
       (lookedPage - 1) * Leaderboard.NB_PPL_PER_LINE,
       lookedPage * Leaderboard.NB_PPL_PER_LINE
     );
+  }
+
+  /**
+   * Gives the current maximal page index
+   */
+  public getMaxPage() {
+    return Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 1;
   }
 }
