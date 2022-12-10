@@ -2,26 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import Event from "../components/event/Event";
 import { ClassController } from "../model/Classes/ClassController";
-import {
-  EventController,
-  getStaticPropsEvent,
-} from "../model/Events/EventController";
+import { EventController } from "../model/Events/EventController";
 import { Leaderboard } from "../model/Leaderboard";
 
-export async function getStaticProps() {
-  return {
-    props: {
-      prepareEventLists: await getStaticPropsEvent(),
-    },
-  };
-}
-
-export default function game({
-  prepareEventLists,
-}: {
-  prepareEventLists: string[];
-}) {
-  EventController.init(prepareEventLists);
+export default function game() {
+  EventController.init();
   let [hasBeenUseEffected, setHasBeenUseEffected] = useState(false);
   const defaultClass = ClassController.getById("Unknown");
   const [playerClass, setPlayerClass] = useState(
