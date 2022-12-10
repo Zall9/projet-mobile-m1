@@ -54,6 +54,8 @@ export class Leaderboard {
     const lookedPage =
       Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 1 < page
         ? 1
+        : page < 1
+        ? 1
         : page;
     return this.datas.slice(
       (lookedPage - 1) * Leaderboard.NB_PPL_PER_LINE,
