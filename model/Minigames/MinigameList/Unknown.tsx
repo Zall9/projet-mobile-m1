@@ -6,7 +6,6 @@ export const minigameInfos: IMinigame = {
     return undefined as unknown as ReactElement;
   },
   refreshInterval: 0,
-  hasLeftRightInputs: false,
   setLogicGrid(): void {},
   evolve(): void {},
   setUpdateGrid: () => null,
