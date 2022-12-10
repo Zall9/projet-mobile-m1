@@ -49,6 +49,7 @@ export default function DescriptionAndSubmitBox(props: {
       <Text color={colors.fonts.white} fontSize={breakpoints.fontSize.h5}>
         {description}
       </Text>
+
       <Button colorScheme={color} onClick={handleClick}>
         Valider le choix
       </Button>

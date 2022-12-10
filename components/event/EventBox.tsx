@@ -4,7 +4,7 @@ import {
   ArrowRightIcon,
   ArrowUpIcon,
 } from "@chakra-ui/icons";
-import { Box, IconButton, Text } from "@chakra-ui/react";
+import { Box, IconButton,keyframes, Text } from "@chakra-ui/react";
 import React, {
   Dispatch,
   ReactElement,
@@ -17,6 +17,17 @@ import { IEvent } from "../../model/Events/IEvent";
 import { EventController } from "../../model/Events/EventController";
 import { Direction, IOutput, Unknown } from "../../model/Events/IOutput";
 import { useRouter } from "next/router";
+
+const flicker= keyframes`
+  0% {
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px #2962ff;
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 20px #2962ff;
+  }
+`
 
 function positionFromDirection(direction: Direction): {
   [key: string]: string;
@@ -58,7 +69,9 @@ export default function EventBox(
     setEvent: Dispatch<SetStateAction<IEvent>>;
   }
 ) {
-  const event = props.event;
+
+    const flickerAnimation = `${flicker} 0.5s ease-in-out infinite alternate`;
+    const event = props.event;
   let [goWithOutput, setGoWithOutput] = useState(Unknown);
   let router = useRouter();
   useEffect(() => {
@@ -109,14 +122,43 @@ export default function EventBox(
             />
           );
         })}
+          <section style={{
+              display:"flex",
+              justifyContent:"center",
+              alignItems:"center",
+              flexDirection:"column",
+              fontSize: "2em",
+              background:"transparent",
+              color:"#fbfbfbfb",
+              textTransform:"uppercase",
+              gap:"1em",
+          }}>
         <Text
-          position="absolute"
-          bottom="20%"
-          color={colors.fonts.white}
-          fontSize={breakpoints.fontSize.h1}
+            animation={flickerAnimation}
+            style={{
+                fontSize: "1em",
+                textDecoration: "underline",
+                //@ts-ignore
+                "@media (max-width: 768px)": {
+                    fontSize: "2em",
+                },
+                fontStyle: "italic",
+                textTransform: "uppercase",
+                color: "transparent",
+                "-webkit-text-stroke": "#fff",
+                "-webkit-text-stroke-width":" 1px",
+                textShadow:" 2px 2px 10px #2962ff",
+                transition: "all 0.5s ease-in-out",
+                textAlign: "center",
+                letterSpacing:" 0.2em",
+
+
+
+            }}
         >
           {event.nom}
         </Text>
+          </section>
       </Box>
     </>
   );
