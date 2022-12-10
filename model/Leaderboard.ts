@@ -20,19 +20,6 @@ export class Leaderboard {
 
   constructor() {
     this.db = getDatabase();
-    const dbRef = ref(this.db);
-    get(child(dbRef, "/users/"))
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          Object.keys(snapshot.val()).forEach((key) =>
-            this.datas.push(snapshot.val()[key])
-          );
-          this.datas.sort((a, b) => a.score - b.score);
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
   /**
@@ -45,6 +32,18 @@ export class Leaderboard {
       score: user.score,
       classId: user.classId,
     }).then(() => null);
+  }
+
+  async init() {
+    const dbRef = ref(this.db);
+    const snapshot = await get(child(dbRef, "/users/"));
+    if (snapshot.exists()) {
+      this.datas = [];
+      Object.keys(snapshot.val()).forEach((key) =>
+        this.datas.push({ ...snapshot.val()[key], username: key })
+      );
+      this.datas.sort((a, b) => a.score - b.score);
+    }
   }
 
   /**
