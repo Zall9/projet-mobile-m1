@@ -21,11 +21,11 @@ import { useRouter } from "next/router";
 const flicker= keyframes`
   0% {
     opacity: 0.5;
-    text-shadow: 2px 2px 10px #2962ff;
+    text-shadow: 2px 2px 10px #770737;
   }
   100% {
     opacity: 1;
-    text-shadow: 2px 2px 20px #2962ff;
+    text-shadow: 2px 2px 20px #770737;
   }
 `
 
@@ -147,7 +147,7 @@ export default function EventBox(
                 color: "transparent",
                 "-webkit-text-stroke": "#fff",
                 "-webkit-text-stroke-width":" 1px",
-                textShadow:" 2px 2px 10px #2962ff",
+                textShadow:" 2px 2px 10px #770737",
                 transition: "all 0.5s ease-in-out",
                 textAlign: "center",
                 letterSpacing:" 0.2em",
