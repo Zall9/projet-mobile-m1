@@ -45,3 +45,5 @@ next-env.d.ts
 /pages/index.js
 /.eslintrc.json
 
+.firebase/*
+/.firebase/

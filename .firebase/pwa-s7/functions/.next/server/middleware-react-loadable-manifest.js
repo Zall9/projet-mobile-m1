@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST={"../model/Events/EventController.ts -> fs":{id:6376,files:["static/chunks/376.bd2f5ee9c5d1cd87.js"]},"../model/Minigames/MinigameController.ts -> fs":{id:5999,files:["static/chunks/999.c335f33b19c794b5.js"]}};
