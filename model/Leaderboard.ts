@@ -64,4 +64,12 @@ export class Leaderboard {
   public getMaxPage() {
     return Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 1;
   }
+
+  /**
+   * Get a user data from its username, if the user doesn't exists, returns undefined
+   * @param username
+   */
+  public getUser(username: string) {
+    return this.datas.find((value) => value.username == username);
+  }
 }
