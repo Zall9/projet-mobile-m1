@@ -16,15 +16,18 @@ const NextConfig = {
 };
 module.exports = {
     ...NextConfig,
+    ...withPWA({
+        pwa: {
+            dest: "public",
+            register: true,
+            skipWaiting: true,
+            runtimeCaching,
+            buildExcludes: [/middleware-manifest.json$/],
+            disable: process.env.NODE_ENV === "development",
+        },
+    }),
     webpack: (config) => {
         config.resolve.fallback = {...config.resolve.fallback, fs: false};
         return config;
     },
-    pwa:{
-        dest: "public",
-        register: true,
-        skipWaiting: true,
-        runtimeCaching,
-        buildExcludes: [/middleware-manifest.json$/]
-    }
 };
