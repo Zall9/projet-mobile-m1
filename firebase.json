@@ -1,6 +1,7 @@
 {
   "hosting": {
     "source": ".",
+    "site": "ov3r-tale",
     "ignore": [
       "firebase.json",
       "**/.*",

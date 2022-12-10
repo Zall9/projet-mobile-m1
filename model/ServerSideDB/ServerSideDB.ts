@@ -31,7 +31,7 @@ const firebaseConfigFront={
 }
 
 //app front is a wep app
-const appFront = initializeApp(firebaseConfigFront);
-const analytics = getAnalytics(appFront);
+const appFront = initializeApp(firebaseConfigFront, "appFront" );
+//const analytics = getAnalytics(appFront);
 
 
