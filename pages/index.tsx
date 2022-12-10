@@ -89,7 +89,7 @@ export default function Home() {
               </Text>
             </Box>
           </Link>
-          <Link href="/leaderboard">
+          <Link href="/LeaderboardPage">
             <Box
               sx={{
                 position: "relative",
