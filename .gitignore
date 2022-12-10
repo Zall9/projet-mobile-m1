@@ -45,4 +45,3 @@ next-env.d.ts
 /pages/index.js
 /.eslintrc.json
 
-/model/ServerSideDB/config.json
