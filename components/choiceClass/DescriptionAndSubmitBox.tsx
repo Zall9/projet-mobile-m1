@@ -34,15 +34,19 @@ export default function DescriptionAndSubmitBox(props: {
   return (
     <Box
       sx={{
-        borderColor: "black",
-        boxShadow: "0 0 10px 0 rgba(0,0,0,0.5)",
+        borderColor: "white",
+        boxShadow: "0 0 10px 0 rgba(255,255,255,0.5)",
         width: "75vw",
         marginLeft: "12.5vw",
         display: "flex",
         flexDirection: "column",
+          "p": {
+            marginLeft: "12.5%",
+            marginRight: "6.5%",
+          },
       }}
     >
-      <Text color={colors.fonts.black} fontSize={breakpoints.fontSize.h5}>
+      <Text color={colors.fonts.white} fontSize={breakpoints.fontSize.h5}>
         {description}
       </Text>
       <Button colorScheme={color} onClick={handleClick}>
