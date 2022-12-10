@@ -8,7 +8,7 @@ const LeaderboardPage = () => {
   const [page, setPage] = useState(0);
     const [datas,setDatas] = useState<ScoreRow[]>();
   useEffect(() => {
-  return  setDatas(ldb.getLeaderboard(page));
+  setDatas(ldb.getLeaderboard(page));
   }, []);
 
 
@@ -17,7 +17,7 @@ const LeaderboardPage = () => {
     <Grid templateColumns={"repeat(6,1fr)"}>
         {/*@ts-ignore*/}
 
-        { datas ?? datas?.map((data) => {
+        { datas?.map((data) => {
             return (
                 <>
                 <GridItem colSpan={1}>
@@ -31,7 +31,7 @@ const LeaderboardPage = () => {
                 </GridItem>
                 </>
             );
-        })}
+        }) ?? <Text>Chargement</Text>}
     </Grid>
     );
 };
