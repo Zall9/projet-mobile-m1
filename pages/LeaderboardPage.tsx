@@ -4,11 +4,14 @@ import {Leaderboard, ScoreRow} from "../model/Leaderboard";
 
 const LeaderboardPage = () => {
   const ldb = new Leaderboard();
+
   console.log('LDB',ldb);
   const [page, setPage] = useState(0);
     const [datas,setDatas] = useState<ScoreRow[]>();
   useEffect(() => {
-  setDatas(ldb.getLeaderboard(page));
+    ldb.init().then(()=>ldb.init().then(() => setDatas(ldb.getLeaderboard(page)))
+    );
+    console.log('datas',datas);
   }, []);
 
 
@@ -31,7 +34,7 @@ const LeaderboardPage = () => {
                 </GridItem>
                 </>
             );
-        }) ?? <Text>Chargement</Text>}
+        }) ?? <Text color={"#fbfbfb"}>Chargement</Text>}
     </Grid>
     );
 };
