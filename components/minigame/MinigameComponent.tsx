@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { MinigameController } from "../../model/Minigames/MinigameController";
 import { minigameInfos } from "../../model/Minigames/MinigameList/Unknown";
 import { useRouter } from "next/router";
+import { Leaderboard, ScoreRow } from "../../model/Leaderboard";
 
 export default function MinigameComponent() {
   let router = useRouter();
@@ -53,13 +54,15 @@ export default function MinigameComponent() {
     }, minigame.refreshInterval);
     if (updateGrid) {
       if (minigame.score >= minigame.scoreTresh) {
-        localStorage.setItem(
-          "score",
-          (
-            parseInt(localStorage.getItem("score") as string) + minigame.score
-          ).toString()
-        );
-        router.push("/game").then(() => null);
+        const ldb = new Leaderboard();
+        ldb.init().then(() => {
+          const user = ldb.getUser(
+            localStorage.getItem("username") as string
+          ) as ScoreRow;
+          user.score += minigame.scoreTresh;
+          Leaderboard.updateUser(user as ScoreRow);
+          router.push("/game").then(() => null);
+        });
       }
       minigame.update(logicGridToUpdate);
       setUpdateGrid(false);

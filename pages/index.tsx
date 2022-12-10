@@ -54,7 +54,7 @@ export default function Home() {
     <Center>
       <Box height="60vh">
         <SimpleGrid columns={1} spacing="5px" marginTop="20vh">
-          <Link href="/game">
+          <Link id="playRef" href="/chooseUsername">
             <Box
               sx={{
                 position: "relative",

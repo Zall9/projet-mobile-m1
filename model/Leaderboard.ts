@@ -42,7 +42,7 @@ export class Leaderboard {
       Object.keys(snapshot.val()).forEach((key) =>
         this.datas.push({ ...snapshot.val()[key], username: key })
       );
-      this.datas.sort((a, b) => a.score - b.score);
+      this.datas.sort((a, b) => b.score - a.score);
     }
   }
 

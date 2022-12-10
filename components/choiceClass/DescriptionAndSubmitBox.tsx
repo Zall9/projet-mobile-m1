@@ -2,6 +2,7 @@ import { Box, Button, Text } from "@chakra-ui/react";
 import React, { SetStateAction } from "react";
 import { breakpoints, colors } from "../../theme";
 import { IClass } from "../../model/Classes/IClass";
+import { Leaderboard } from "../../model/Leaderboard";
 
 export default function DescriptionAndSubmitBox(props: {
   description: string;
@@ -13,8 +14,21 @@ export default function DescriptionAndSubmitBox(props: {
   const color = description !== null ? "teal" : "red";
   const selectedClass = props.selectedClass;
   const handleClick = () => {
-    localStorage.setItem("classId", selectedClass.nom);
-    RootSetPlayerClass(selectedClass);
+    const ldb = new Leaderboard();
+    ldb.init().then(() => {
+      let user = ldb.getUser(localStorage.getItem("username") as string);
+      if (user) {
+        user.classId = selectedClass.nom;
+      } else {
+        user = {
+          username: localStorage.getItem("username") as string,
+          score: 0,
+          classId: selectedClass.nom,
+        };
+      }
+      Leaderboard.updateUser(user);
+      RootSetPlayerClass(selectedClass);
+    });
   };
 
   return (
