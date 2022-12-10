@@ -2,7 +2,11 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/.firebase/projet-mobile-m1-22222/hosting/_next/M-HAh3id4o7AMNHKGaCuR" />
+      <excludeFolder url="file://$MODULE_DIR$/.firebase/pwa-s7/hosting/_next/q_6LVhMQhY5NW3IiPYeee" />
+      <excludeFolder url="file://$MODULE_DIR$/out" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
