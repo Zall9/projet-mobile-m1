@@ -8,27 +8,21 @@ export const eventInfos: IEvent = {
   image: "tent_forest",
   sorties: [
     {
-      direction: Direction.up,
-      nextEvent: "StartingEventMage",
-      willMinigame: true,
-      whichMinigame: "Memory",
-    },
-    {
-      direction: Direction.down,
-      nextEvent: "StartingEventMage",
+      direction: Direction.left,
+      nextEvent: "CaveEntry",
       willMinigame: true,
       whichMinigame: "Panier",
     },
     {
-      direction: Direction.left,
-      nextEvent: "StartingEventMage",
+      direction: Direction.up,
+      nextEvent: "CaveEntry",
       willMinigame: true,
-      whichMinigame: "RPS",
+      whichMinigame: "Memory",
     },
     {
       direction: Direction.right,
-      nextEvent: "StartingEventMage",
-      willMinigame: true,
+      nextEvent: "CaveEntry",
+      willMinigame: false,
     },
   ],
 };

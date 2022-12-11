@@ -1,4 +1,4 @@
-import {IEvent} from "./IEvent";
+import { IEvent } from "./IEvent";
 import Constants from "../Constants";
 
 let eventIdList: string[];
@@ -9,24 +9,10 @@ La méthode init est appelée au démarrage du jeu.
 
 La méthode init crée une liste d'identifiants d'événement.
 
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
-Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu.
-
 Les eventIds sont utilisés pour identifier les événements qui sont dans le jeu. */
 export class EventController {
   static init() {
-    eventIdList = ["ForestTent"];
+    eventIdList = ["ForestTent", "CaveEntry"];
   }
 
   /**
@@ -58,8 +44,8 @@ export class EventController {
    */
   static getImage(eventInfos: IEvent): string {
     return eventInfos.image === "unknown"
-        ? Constants.UNKNOWN_PATH
-        : `${Constants.IMAGE_PATH}events/${eventInfos.image}${Constants.IMAGE_EXT}`;
+      ? Constants.UNKNOWN_PATH
+      : `${Constants.IMAGE_PATH}events/${eventInfos.image}${Constants.IMAGE_EXT}`;
   }
 
   /**
@@ -68,7 +54,7 @@ export class EventController {
    */
   static pickRandomEvent(): IEvent {
     return this.pickRandomEventInIdList(
-        eventIdList.filter((v) => v !== "Unknown")
+      eventIdList.filter((v) => v !== "Unknown")
     );
   }
 

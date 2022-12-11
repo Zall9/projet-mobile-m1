@@ -12,21 +12,6 @@ export const eventInfos: IEvent = {
       nextEvent: "ForestTent",
       willMinigame: false,
     },
-    {
-      direction: Direction.down,
-      nextEvent: "StartingEventMage",
-      willMinigame: false,
-    },
-    {
-      direction: Direction.left,
-      nextEvent: "StartingEventMage",
-      willMinigame: false,
-    },
-    {
-      direction: Direction.right,
-      nextEvent: "StartingEventMage",
-      willMinigame: false,
-    },
   ],
   classe: "Mage",
 };

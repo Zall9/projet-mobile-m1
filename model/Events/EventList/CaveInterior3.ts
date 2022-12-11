@@ -2,17 +2,15 @@ import { IEvent } from "../IEvent";
 import { Direction } from "../IOutput";
 
 export const eventInfos: IEvent = {
-  id: "StartingEventWarrior",
+  id: "CaveInterior3",
   nom: "",
   description: "",
-  image: "warrior_00",
+  image: "cave_interior_1",
   sorties: [
     {
       direction: Direction.up,
-      nextEvent: "ForestTent",
-      willMinigame: true,
-      whichMinigame: "Panier",
+      nextEvent: "CaveOut",
+      willMinigame: Math.random() > 0.5,
     },
   ],
-  classe: "Guerrier",
 };

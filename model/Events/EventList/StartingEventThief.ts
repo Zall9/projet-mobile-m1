@@ -1,10 +1,17 @@
 import { IEvent } from "../IEvent";
+import { Direction } from "../IOutput";
 
 export const eventInfos: IEvent = {
   id: "StartingEventThief",
-  nom: "",
+  nom: "Taverne ",
   description: "",
-  image: "unknown",
-  sorties: [],
-  classe: "Voleur",
+  image: "thief_00",
+  sorties: [
+    {
+      direction: Direction.up,
+      nextEvent: "CaveEntry",
+      willMinigame: false,
+    },
+  ],
+  classe: "Thief",
 };
