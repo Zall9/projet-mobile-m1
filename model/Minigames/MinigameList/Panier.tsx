@@ -11,7 +11,7 @@ import { Panier } from "../../../components/icons/Panier";
 import { Cerise } from "../../../components/icons/Cerise";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { ReactElement } from "react";
-import Ennemy from "../../../components/ennemy/ennemy";
+import { Enemy } from "../../../components/enemy/Enemy";
 
 const NBROW = 7;
 
@@ -120,12 +120,12 @@ export const minigameInfos: IMinigame = {
           }}
         >
           <Center>
-            <Ennemy
+            <Enemy
               name={"carnivoran"}
-              currLife={
+              currLife={Math.floor(
                 ((this.scoreTresh - this.score) / this.scoreTresh) * 100
-              }
-            ></Ennemy>
+              )}
+            ></Enemy>
           </Center>
         </Box>
       </>
@@ -163,7 +163,7 @@ export const minigameInfos: IMinigame = {
     this.setUpdateGrid(true);
   },
   /* La fonction qui est appelée à chaque fois que le jeu est mis à jour. Il est utilisé pour déplacer les fruits vers le
-                                                                            bas et pour engendrer de nouveaux fruits. */
+																				bas et pour engendrer de nouveaux fruits. */
   evolve(logicGrid: GridMinigame): void {
     const logicGridCopy = new Map(
       JSON.parse(JSON.stringify(Array.from(logicGrid)))

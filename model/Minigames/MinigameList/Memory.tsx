@@ -22,7 +22,7 @@ import {
   Memory9,
 } from "../../../components/icons/MemoryIcons";
 import { ReactElement } from "react";
-import Ennemy from "../../../components/ennemy/ennemy";
+import { Enemy } from "../../../components/enemy/Enemy";
 
 export class MemoryCaseTemplate implements CaseTemplate {
   isReturned: boolean;
@@ -132,12 +132,12 @@ export const minigameInfos: IMinigame = {
         ))}
         <GridItem colSpan={1} />
         <GridItem colSpan={this.nbCol - 2}>
-          <Ennemy
-            currLife={
-              Math.floor((this.scoreTresh - this.score) / this.scoreTresh) * 100
-            }
+          <Enemy
+            currLife={Math.floor(
+              ((this.scoreTresh - this.score) / this.scoreTresh) * 100
+            )}
             name={"bonefire"}
-          ></Ennemy>
+          ></Enemy>
         </GridItem>
         <GridItem colSpan={1} />
       </Grid>
