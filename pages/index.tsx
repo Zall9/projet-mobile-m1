@@ -1,15 +1,15 @@
 import {
-    Box,
-    Center,
-    IconButton,
-    keyframes,
-    SimpleGrid,
-    Text,
+  Box,
+  Center,
+  IconButton,
+  keyframes,
+  SimpleGrid,
+  Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
-import {PlayButton} from "../components/icons/playButton.svg";
-import {breakpoints} from "../theme";
-import {LeaderBoardButton} from "../components/icons/leaderboardButton.svg";
+import { PlayButton } from "../components/icons/playButton.svg";
+import { breakpoints } from "../theme";
+import { LeaderBoardButton } from "../components/icons/leaderboardButton.svg";
 
 const glitch = keyframes`
   0% {

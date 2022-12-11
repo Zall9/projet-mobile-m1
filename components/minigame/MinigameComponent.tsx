@@ -18,6 +18,7 @@ export default function MinigameComponent() {
   let [minigame, setMinigame] = useState<IMinigame>(minigameInfos);
   let [reset, sr] = useState(false);
   useEffect(() => {
+    localStorage.setItem("precedentPage", "/minigame");
     miniGameId = localStorage.getItem("miniGameId") as string;
     setMinigame(
       miniGameId === "random"

@@ -1,9 +1,10 @@
-import {IEvent} from "../IEvent";
+import { IEvent } from "../IEvent";
 
 export const eventInfos: IEvent = {
-    nom: "",
-    description: "",
-    image: "unknown",
-    sorties: [],
-    classe: "Voleur"
-}
+  id: "StartingEventThief",
+  nom: "",
+  description: "",
+  image: "unknown",
+  sorties: [],
+  classe: "Voleur",
+};

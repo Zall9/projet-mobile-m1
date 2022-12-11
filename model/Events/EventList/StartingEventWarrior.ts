@@ -1,9 +1,10 @@
-import {IEvent} from "../IEvent";
+import { IEvent } from "../IEvent";
 
 export const eventInfos: IEvent = {
-    nom: "",
-    description: "",
-    image: "unknown",
-    sorties: [],
-    classe: "Guerrier"
-}
+  id: "StartingEventWarrior",
+  nom: "",
+  description: "",
+  image: "unknown",
+  sorties: [],
+  classe: "Guerrier",
+};

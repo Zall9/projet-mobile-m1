@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ChoiceClass from "../components/choiceClass/ChoiceClass";
 import Event from "../components/event/Event";
 import { ClassController } from "../model/Classes/ClassController";
@@ -16,9 +16,8 @@ export default function game() {
     EventController.getById("Unknown")
   );
 
-  const step = useRef(0);
-
   useEffect(() => {
+    localStorage.setItem("precedentPage", "/game");
     const ldb = new Leaderboard();
     ldb.init().then(() => {
       const user = ldb.getUser(localStorage.getItem("username") as string);
@@ -32,20 +31,26 @@ export default function game() {
             : EventController.pickRandomEvent()
         );
         localStorage.removeItem("miniGameId");
-        localStorage.removeItem("nextEvent");
       }
       setHasBeenUseEffected(true);
     });
   }, []);
 
   useEffect(() => {
-    if (playerClass && step.current) {
-      setCurrentEvent(EventController.pickRandomEvent());
+    if (playerClass && playerClass !== defaultClass) {
+      setCurrentEvent(
+        localStorage.getItem("nextEvent")
+          ? EventController.getById(localStorage.getItem("nextEvent") as string)
+          : EventController.getByClassRequirement(playerClass.nom)
+      );
     } else {
-      setCurrentEvent(EventController.getByClassRequirement(playerClass.nom));
     }
     setHasBeenUseEffected(true);
   }, [playerClass]);
+
+  useEffect(() => {
+    localStorage.setItem("nextEvent", currentEvent.id);
+  }, [currentEvent]);
 
   return (
     <>
