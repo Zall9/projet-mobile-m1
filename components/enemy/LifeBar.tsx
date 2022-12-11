@@ -34,7 +34,9 @@ export const LifeBar = (props: any) => {
           borderRadius: "inherit",
           textAlign: "right",
         }}
-      ></div>
+      >
+        <span style={labelStyles}>{`${completed}`}</span>
+      </div>
     </div>
   );
 };
