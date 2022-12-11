@@ -13,17 +13,16 @@ import { Leaderboard, ScoreRow } from "../../model/Leaderboard";
 export default function MinigameComponent() {
   let router = useRouter();
   let logicGrid: GridMinigame = new Map();
-  let miniGameId: string;
 
   let [minigame, setMinigame] = useState<IMinigame>(minigameInfos);
   let [reset, sr] = useState(false);
   useEffect(() => {
     localStorage.setItem("precedentPage", "/minigame");
-    miniGameId = localStorage.getItem("miniGameId") as string;
+    const miniGameId = localStorage.getItem("miniGameId");
     setMinigame(
-      miniGameId === "random"
-        ? MinigameController.pickRandomMinigame()
-        : MinigameController.getById(miniGameId)
+      miniGameId && miniGameId !== "random"
+        ? MinigameController.getById(miniGameId)
+        : MinigameController.pickRandomMinigame()
     );
     if (minigame === minigameInfos) {
       sr(!reset);

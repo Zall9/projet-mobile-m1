@@ -5,21 +5,15 @@ let eventIdList: string[];
 
 export class EventController {
   static init() {
-    eventIdList = [
-      "ForestTent",
-      "StartingEventMage",
-      "StartingEventThief",
-      "StartingEventWarrior",
-      "Unknown",
-    ];
+    eventIdList = ["ForestTent"];
   }
 
   static getById(id: string): IEvent {
-    return (
-      eventIdList.includes(id)
-        ? require(`./EventList/${id}.ts`)
-        : require(`./EventList/Unknown.ts`)
-    ).eventInfos as IEvent;
+    try {
+      return require(`./EventList/${id}.ts`).eventInfos;
+    } catch {
+      return require(`./EventList/Unknown.ts`).eventInfos;
+    }
   }
 
   static getEventsByIds(ids: string[]): IEvent[] {
@@ -27,9 +21,6 @@ export class EventController {
   }
 
   static getImage(eventInfos: IEvent): string {
-    console.log(
-      `${Constants.IMAGE_PATH}event/${eventInfos.image}${Constants.IMAGE_EXT}`
-    );
     return eventInfos.image === "unknown"
       ? Constants.UNKNOWN_PATH
       : `${Constants.IMAGE_PATH}events/${eventInfos.image}${Constants.IMAGE_EXT}`;
@@ -46,11 +37,8 @@ export class EventController {
   }
 
   static getByClassRequirement(classe: string): IEvent {
-    let foundIEvent: IEvent | undefined = undefined;
-    eventIdList.forEach((event) => {
-      const e = EventController.getById(event);
-      if (!foundIEvent && e.classe === classe) foundIEvent = e;
-    });
-    return foundIEvent ?? this.pickRandomEvent();
+    console.log("classe", classe);
+    const foundIEvent: IEvent = this.getById("StartingEvent" + classe);
+    return foundIEvent.id !== "Unknown" ? foundIEvent : this.pickRandomEvent();
   }
 }

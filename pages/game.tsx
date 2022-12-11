@@ -17,19 +17,13 @@ export default function game() {
   );
 
   useEffect(() => {
+    console.log("UE DE BASE", playerClass, currentEvent);
     localStorage.setItem("precedentPage", "/game");
     const ldb = new Leaderboard();
     ldb.init().then(() => {
       const user = ldb.getUser(localStorage.getItem("username") as string);
       if (user) {
         setPlayerClass(ClassController.getById(user.classId));
-        setCurrentEvent(
-          localStorage.getItem("nextEvent")
-            ? EventController.getById(
-                localStorage.getItem("nextEvent") as string
-              )
-            : EventController.pickRandomEvent()
-        );
         localStorage.removeItem("miniGameId");
       }
       setHasBeenUseEffected(true);
@@ -37,19 +31,25 @@ export default function game() {
   }, []);
 
   useEffect(() => {
-    if (playerClass && playerClass !== defaultClass) {
+    console.log("UE PC", playerClass);
+    if (playerClass && playerClass.nom !== defaultClass.nom) {
+      console.log("hbue", hasBeenUseEffected);
       setCurrentEvent(
         localStorage.getItem("nextEvent")
           ? EventController.getById(localStorage.getItem("nextEvent") as string)
-          : EventController.getByClassRequirement(playerClass.nom)
+          : hasBeenUseEffected
+          ? EventController.getByClassRequirement(playerClass.nom)
+          : EventController.pickRandomEvent()
       );
-    } else {
     }
     setHasBeenUseEffected(true);
   }, [playerClass]);
 
   useEffect(() => {
-    localStorage.setItem("nextEvent", currentEvent.id);
+    console.log("UE CE", currentEvent);
+    if (currentEvent.id !== "Unknown") {
+      localStorage.setItem("nextEvent", currentEvent.id);
+    }
   }, [currentEvent]);
 
   return (
