@@ -64,7 +64,7 @@ export class Leaderboard {
    * Gives the current maximal page index
    */
   public getMaxPage() {
-    return Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 2;
+    return Math.ceil(this.datas.length / Leaderboard.NB_PPL_PER_LINE);
   }
 
   /**
