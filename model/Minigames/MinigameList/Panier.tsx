@@ -11,6 +11,7 @@ import { Panier } from "../../../components/icons/Panier";
 import { Cerise } from "../../../components/icons/Cerise";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { ReactElement } from "react";
+import Ennemy from "../../../components/ennemy/ennemy";
 
 const NBROW = 7;
 
@@ -85,23 +86,49 @@ export const minigameInfos: IMinigame = {
       }
     }
     return (
-      <Grid
-        templateColumns={`repeat(${this.nbCol},auto)`}
-        sx={{
-          height: "85vh",
-          backgroundImage: `url("/static/images/backgrounds/panierFont.png")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      >
-        {parameters.map((v) => (
+      <>
+        <Grid
+          templateColumns={`repeat(${this.nbCol},auto)`}
+          sx={{
+            height: "50vh",
+            width: "50vw",
+            backgroundImage: `url("/static/images/backgrounds/panierFont.png")`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        >
+          {parameters.map((v) => (
+            <Center>
+              <GridItem colSpan={1} rowSpan={1} w="42px" h="42px">
+                {v}
+              </GridItem>
+            </Center>
+          ))}
+        </Grid>
+        <Box
+          sx={{
+            position: "absolute",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            right: "12.5%",
+            width: "70vw",
+            img: {
+              height: "20vh",
+            },
+          }}
+        >
           <Center>
-            <GridItem colSpan={1} rowSpan={1} w="42px" h="42px">
-              {v}
-            </GridItem>
+            <Ennemy
+              name={"carnivoran"}
+              currLife={
+                ((this.scoreTresh - this.score) / this.scoreTresh) * 100
+              }
+            ></Ennemy>
           </Center>
-        ))}
-      </Grid>
+        </Box>
+      </>
     );
   },
   /* Initialisation du jeu. */
@@ -136,7 +163,7 @@ export const minigameInfos: IMinigame = {
     this.setUpdateGrid(true);
   },
   /* La fonction qui est appelée à chaque fois que le jeu est mis à jour. Il est utilisé pour déplacer les fruits vers le
-    bas et pour engendrer de nouveaux fruits. */
+                                                                            bas et pour engendrer de nouveaux fruits. */
   evolve(logicGrid: GridMinigame): void {
     const logicGridCopy = new Map(
       JSON.parse(JSON.stringify(Array.from(logicGrid)))

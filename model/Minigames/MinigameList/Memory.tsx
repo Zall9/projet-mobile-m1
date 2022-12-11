@@ -134,7 +134,7 @@ export const minigameInfos: IMinigame = {
         <GridItem colSpan={this.nbCol - 2}>
           <Ennemy
             currLife={
-              (Math.floor(this.scoreTresh - this.score) / this.scoreTresh) * 100
+              Math.floor((this.scoreTresh - this.score) / this.scoreTresh) * 100
             }
             name={"bonefire"}
           ></Ennemy>
