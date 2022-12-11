@@ -23,6 +23,7 @@ export class PanierCaseTemplate implements CaseTemplate {
 }
 
 export const minigameInfos: IMinigame = {
+  /* Les commandes du minijeu. */
   Controls(logicGrid: GridMinigame): ReactElement {
     return (
       <Box
@@ -47,6 +48,7 @@ export const minigameInfos: IMinigame = {
       </Box>
     );
   },
+  //intervale pour refresh la vue
   refreshInterval: 150,
   setUpdateGrid: () => null,
   setLogicGrid: () => null,
@@ -61,6 +63,11 @@ export const minigameInfos: IMinigame = {
     },
     direction: [Direction.left, Direction.right],
   },
+
+  /**
+   *  Spécification de viewgrid pour le jeu panier
+   *
+   *  */
   ViewGrid(logicGrid: GridMinigame) {
     const cols = Array.from(logicGrid.keys());
     const parameters = [];
@@ -97,6 +104,7 @@ export const minigameInfos: IMinigame = {
       </Grid>
     );
   },
+  /* Initialisation du jeu. */
   init(
     logicGrid: GridMinigame,
     setUpdateGrid: SetUpdateGrid,
@@ -108,12 +116,16 @@ export const minigameInfos: IMinigame = {
     this.setUpdateGrid = setUpdateGrid;
     this.setLogicGrid = setLogicGrid;
   },
+  /* Fonction appelée à chaque tick. */
   update(logicGrid: GridMinigame): void {
     this.setLogicGrid(logicGrid);
     this.setUpdateGrid(true);
   },
+
   caseTemplateCreate: () => new PanierCaseTemplate(),
+  /* Déplacer le joueur vers la gauche ou vers la droite. */
   playerInput(input: string): void {
+    /* Déplacer le joueur vers la gauche ou vers la droite. */
     let oldPos = this.player.position.y.charCodeAt(0) - "A".charCodeAt(0);
     if (input === "left" && oldPos > 0) {
       oldPos--;
@@ -123,6 +135,8 @@ export const minigameInfos: IMinigame = {
     this.player.position.y = String.fromCharCode("A".charCodeAt(0) + oldPos);
     this.setUpdateGrid(true);
   },
+  /* La fonction qui est appelée à chaque fois que le jeu est mis à jour. Il est utilisé pour déplacer les fruits vers le
+    bas et pour engendrer de nouveaux fruits. */
   evolve(logicGrid: GridMinigame): void {
     const logicGridCopy = new Map(
       JSON.parse(JSON.stringify(Array.from(logicGrid)))
@@ -147,6 +161,12 @@ export const minigameInfos: IMinigame = {
   },
 };
 
+/**
+ * mets un fruit dans la colonne correspondante , puis
+ * définit la propriété hasFruit de la case sur true
+ * @param {GridMinigame} logicGrid - GridMinigame : la grille qui sera utilisée pour afficher le mini-jeu.
+ * @param {IMinigame} minigame - IMinijeu
+ */
 function spawnItems(logicGrid: GridMinigame, minigame: IMinigame) {
   const letterDrawn = String.fromCharCode(
     65 + Math.floor(Math.random() * minigame.nbCol)

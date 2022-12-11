@@ -12,16 +12,28 @@ import {
 
 export default function chooseUsername() {
   let router = useRouter();
+  /* vérifie si l'utilisateur a un nom d'utilisateur dans localStorage, et si c'est le cas, il le redirige vers la page
+    du jeu. */
   useEffect(() => {
     if (localStorage.getItem("username")) {
       router.push("/game").then(() => null);
     }
   });
 
+  /**
+   * La fonction handleChange prend un objet événement comme argument, et l'objet événement a une propriété cible, et la
+   * propriété cible a une propriété valeur, et la propriété valeur est une chaîne.
+   * @param event - { cible : { valeur : chaîne } }
+   */
   function handleChange(event: { target: { value: string } }) {
     localStorage.setItem("username", event.target.value);
   }
 
+  /**
+   * OnSubmit est une fonction qui prend un événement comme argument et, lorsqu'elle est appelée, empêche l'action par
+   * défaut de l'événement, puis pousse l'utilisateur vers la page du jeu.
+   * @param event - { preventDefault : () => void }
+   */
   function onSubmit(event: { preventDefault: () => void }) {
     event.preventDefault();
     router.push("/game").then(() => null);
@@ -41,7 +53,7 @@ export default function chooseUsername() {
         >
           <FormLabel color={"#fbfbfbfb"}>Entrez votre nom</FormLabel>
           <input
-            style={{zIndex: "999999", opacity: "0.5"}}
+            style={{ zIndex: "999999", opacity: "0.5" }}
             type="text"
             onChange={handleChange}
           />
