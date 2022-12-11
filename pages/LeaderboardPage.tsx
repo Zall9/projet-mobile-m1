@@ -1,9 +1,17 @@
-import React, {useEffect, useState} from "react";
-import {Center, Grid, GridItem, IconButton, keyframes, Text} from "@chakra-ui/react";
-import {Leaderboard, ScoreRow} from "../model/Leaderboard";
-import {breakpoints} from "../theme";
-import {BackBpIcon} from "../components/icons/backPgIcon.svg";
-import {BackIcon} from "../components/icons/MemoryIcons";
+import React, { useEffect, useState } from "react";
+import {
+  Box,
+  Center,
+  Grid,
+  GridItem,
+  IconButton,
+  keyframes,
+  Text,
+} from "@chakra-ui/react";
+import { Leaderboard, ScoreRow } from "../model/Leaderboard";
+import { breakpoints } from "../theme";
+import { BackBpIcon } from "../components/icons/backPgIcon.svg";
+import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 
 const glitch = keyframes`
   0% {
@@ -85,159 +93,207 @@ const lights = keyframes`
 `;
 
 const LeaderboardPage = () => {
-    const ldb = new Leaderboard();
-    const glitchAnimation = `${glitch} 0.5s infinite linear alternate-reverse`;
-    const lightAnimation = `${lights} 3s infinite linear alternate-reverse`;
-    const [page, setPage] = useState(1);
+  const ldb = new Leaderboard();
+  const glitchAnimation = `${glitch} 0.5s infinite linear alternate-reverse`;
+  const lightAnimation = `${lights} 3s infinite linear alternate-reverse`;
+  const [page, setPage] = useState(1);
+  const [datas, setDatas] = useState<ScoreRow[]>();
 
-    const [datas, setDatas] = useState<ScoreRow[]>();
-    useEffect(() => {
-        ldb.init().then(() => {
-            setDatas(ldb.getLeaderboard(page));
-        });
-    }, []);
+  useEffect(() => {
+    ldb.init().then(() => {
+      setDatas(ldb.getLeaderboard(page));
+    });
+  }, [page]);
 
-    // @ts-ignore
-    return (
-        <>
-            {/*<IconButton aria-label={"Previous page"} icon={"arrow-left"} onClick={() => setPage(page - 1)}/>*/}
-            {/*<IconButton aria-label={"Next page"} icon={"arrow-right"} onClick={() => setPage(page + 1)}/>*/}
-            <IconButton icon={<BackBpIcon boxSize={breakpoints.playButtonBoxSize}></BackBpIcon>} aria-label={"Next page"}
-                sx={{
-                    position: "absolute",
-                    bottom:"min(20vh,15vw)",
-                    background: "none",
-                    "&:hover":{
-                        outline: "none",
-                        background: "none",
-                    },
-                    "&:active":{
-                        outline: "none",
-                        background: "none",
-                    },
-                    "&:focus":{
-                        outline: "none",
-                        background: "none",
-                    }
-
-                }}
+  // @ts-ignore
+  return (
+    <>
+      {/*<IconButton aria-label={"Previous page"} icon={"arrow-left"} onClick={() => setPage(page - 1)}/>*/}
+      {/*<IconButton aria-label={"Next page"} icon={"arrow-right"} onClick={() => setPage(page + 1)}/>*/}
+      <IconButton
+        icon={
+          <BackBpIcon
+            boxSize={breakpoints.playButtonBoxSize}
+            color={"#fbfbfbfb"}
+          ></BackBpIcon>
+        }
+        aria-label={"Next page"}
+        sx={{
+          position: "absolute",
+          top: "80%",
+          background: "none",
+          "&:hover": {
+            outline: "none",
+            background: "none",
+          },
+          "&:active": {
+            outline: "none",
+            background: "none",
+          },
+          "&:focus": {
+            outline: "none",
+            background: "none",
+          },
+        }}
+      ></IconButton>
+      <Grid templateColumns={"repeat(7,1fr)"}>
+        <GridItem colSpan={2} />
+        <GridItem colSpan={3}>
+          <Center>
+            <Text
+              color={"#fbfbfbfb"}
+              animation={glitchAnimation}
+              fontSize={breakpoints.fontSize.h1}
             >
+              Leaderboard
+            </Text>
+          </Center>
+        </GridItem>
+        <GridItem colSpan={2} />
 
-            </IconButton>
-        <Grid templateColumns={"repeat(7,1fr)"}>
-            <GridItem colSpan={2}/>
+        <GridItem colSpan={2} />
+        <GridItem colSpan={1}>
+          <Center>
+            <Text
+              color={"#fbfbfbfb"}
+              animation={lightAnimation}
+              fontSize={breakpoints.fontSize.h2}
+            >
+              Nom
+            </Text>
+          </Center>
+        </GridItem>
+
+        <GridItem colSpan={1}>
+          <Center>
+            <Text
+              color={"#fbfbfbfb"}
+              animation={lightAnimation}
+              fontSize={breakpoints.fontSize.h2}
+            >
+              Score&nbsp;&nbsp;
+            </Text>
+          </Center>
+        </GridItem>
+        <GridItem colSpan={1}>
+          <Center>
+            <Text
+              color={"#fbfbfbfb"}
+              animation={lightAnimation}
+              fontSize={breakpoints.fontSize.h2}
+            >
+              Classe
+            </Text>
+          </Center>
+        </GridItem>
+        <GridItem colSpan={2} />
+        {datas?.map((data, index) => {
+          return (
+            <>
+              <GridItem colSpan={1} />
+              <GridItem colSpan={1}>
+                <Center>
+                  <Text
+                    color={"#fbfbfbfb"}
+                    fontSize={breakpoints.fontSize.h2}
+                    animation={lightAnimation}
+                  >
+                    {index + 1}
+                  </Text>
+                </Center>
+              </GridItem>
+              <GridItem colSpan={1}>
+                <Center>
+                  <Text
+                    animation={lightAnimation}
+                    fontSize={breakpoints.fontSize.h2}
+                    color={"#fbfbfbfb"}
+                  >
+                    {data.username}
+                  </Text>
+                </Center>
+              </GridItem>
+              <GridItem colSpan={1}>
+                <Center>
+                  <Text
+                    animation={lightAnimation}
+                    fontSize={breakpoints.fontSize.h2}
+                    color={"#fbfbfbfb"}
+                  >
+                    {data.score}
+                  </Text>
+                </Center>
+              </GridItem>
+              <GridItem colSpan={1}>
+                <Center>
+                  <Text
+                    animation={lightAnimation}
+                    fontSize={breakpoints.fontSize.h2}
+                    color={"#fbfbfbfb"}
+                  >
+                    {data.classId}
+                  </Text>
+                </Center>
+              </GridItem>
+              <GridItem colSpan={2} />
+            </>
+          );
+        }) ?? (
+          <>
+            <GridItem colSpan={2} />
             <GridItem colSpan={3}>
-                <Center>
-                    <Text
-                        color={"#fbfbfbfb"}
-                        animation={glitchAnimation}
-                        fontSize={breakpoints.fontSize.h1}
-                    >
-                        Leaderboard
-                    </Text>
-                </Center>
+              <Center>
+                <Text fontSize={breakpoints.fontSize.h2} color={"#fbfbfb"}>
+                  Chargement...
+                </Text>
+              </Center>
+              <GridItem colSpan={2} />
             </GridItem>
-            <GridItem colSpan={2}/>
-
-            <GridItem colSpan={2}/>
-            <GridItem colSpan={1}>
-                <Center>
-                    <Text
-                        color={"#fbfbfbfb"}
-                        animation={lightAnimation}
-                        fontSize={breakpoints.fontSize.h2}
-                    >
-                        Nom
-                    </Text>
-                </Center>
-            </GridItem>
-
-            <GridItem colSpan={1}>
-                <Center>
-                    <Text
-                        color={"#fbfbfbfb"}
-                        animation={lightAnimation}
-                        fontSize={breakpoints.fontSize.h2}
-                    >
-
-                        Score&nbsp;&nbsp;
-                    </Text>
-                </Center>
-            </GridItem>
-            <GridItem colSpan={1}>
-                <Center>
-                    <Text
-                        color={"#fbfbfbfb"}
-                        animation={lightAnimation}
-                        fontSize={breakpoints.fontSize.h2}
-                    >
-
-                        Classe
-                    </Text>
-                </Center>
-            </GridItem>
-            <GridItem colSpan={2}/>
-            {datas?.map((data, index) => {
-                return (
-                    <>
-                        <GridItem colSpan={1}/>
-                        <GridItem colSpan={1}>
-                            <Center>
-                                <Text color={"#fbfbfbfb"} fontSize={breakpoints.fontSize.h2}
-                                      animation={lightAnimation}>{index + 1}</Text>
-                            </Center>
-                        </GridItem>
-                        <GridItem colSpan={1}>
-                            <Center>
-                                <Text
-                                    animation={lightAnimation}
-                                    fontSize={breakpoints.fontSize.h2}
-                                    color={"#fbfbfbfb"}
-                                >
-                                    {data.username}
-                                </Text>
-                            </Center>
-                        </GridItem>
-                        <GridItem colSpan={1}>
-                            <Center>
-                                <Text
-                                    animation={lightAnimation}
-                                    fontSize={breakpoints.fontSize.h2}
-                                    color={"#fbfbfbfb"}
-                                >
-                                    {data.score}
-                                </Text>
-                            </Center>
-                        </GridItem>
-                        <GridItem colSpan={1}>
-                            <Center>
-                                <Text
-                                    animation={lightAnimation}
-                                    fontSize={breakpoints.fontSize.h2}
-                                    color={"#fbfbfbfb"}
-                                >
-                                    {data.classId}
-                                </Text>
-                            </Center>
-                        </GridItem>
-                        <GridItem colSpan={2}/>
-                    </>
-                );
-            }) ?? (
-                <>
-                    <GridItem colSpan={2}/>
-                    <GridItem colSpan={3}>
-                        <Center>
-                            <Text fontSize={breakpoints.fontSize.h2} color={"#fbfbfb"}>
-                                Chargement...
-                            </Text>
-                        </Center>
-                        <GridItem colSpan={2}/>
-                    </GridItem>
-                </>
-            )}
-        </Grid>
-        </>
-    );
+          </>
+        )}
+        <GridItem colSpan={2} />
+        <GridItem colSpan={3}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "row",
+              gap: "12.5%",
+              marginTop: "10%",
+            }}
+          >
+            <IconButton
+              aria-label={"Previous page"}
+              sx={{
+                background: "none",
+              }}
+              icon={
+                <ArrowLeftIcon boxSize={12} color={"#fbfbfbfb"}></ArrowLeftIcon>
+              }
+              onClick={() => setPage(page - 1)}
+            />
+            <Text fontSize={breakpoints.fontSize.h1} color={"#fbfbfbfb"}>
+              {page}
+            </Text>
+            <IconButton
+              aria-label={"Next page"}
+              sx={{
+                background: "none",
+              }}
+              icon={
+                <ArrowRightIcon
+                  boxSize={12}
+                  color={"#fbfbfbfb"}
+                ></ArrowRightIcon>
+              }
+              onClick={() => setPage(page + 1)}
+            />
+          </Box>
+        </GridItem>
+        <GridItem colSpan={2} />
+      </Grid>
+    </>
+  );
 };
 export default LeaderboardPage;
