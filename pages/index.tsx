@@ -1,15 +1,9 @@
-import {
-  Box,
-  Center,
-  IconButton,
-  keyframes,
-  SimpleGrid,
-  Text,
-} from "@chakra-ui/react";
+import {Box, Center, IconButton, keyframes, SimpleGrid, Text,} from "@chakra-ui/react";
 import Link from "next/link";
-import { PlayButton } from "../components/icons/playButton.svg";
-import { breakpoints } from "../theme";
-import { LeaderBoardButton } from "../components/icons/leaderboardButton.svg";
+import {PlayButton} from "../components/icons/playButton.svg";
+import {breakpoints} from "../theme";
+import {LeaderBoardButton} from "../components/icons/leaderboardButton.svg";
+import {useEffect} from "react";
 
 /* Une animation d'image qui est utilisée pour rendre le texte glitch. */
 const glitch = keyframes`
@@ -51,6 +45,7 @@ const glitch = keyframes`
 
 export default function Home() {
   const glitchAnimation = `${glitch} 2s infinite linear alternate-reverse`;
+  useEffect(() => localStorage.setItem("precedentPage", "/"));
   return (
     <Center>
       <Box height="60vh">
