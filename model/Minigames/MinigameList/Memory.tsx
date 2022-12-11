@@ -178,8 +178,7 @@ export const minigameInfos: IMinigame = {
     const returnedCell = (logicGrid.get(input[0]) as MemoryCaseTemplate[])[
       parseInt(input[1])
     ];
-    console.log(returnedCell);
-    returnedCell.isReturned = true;
+    returnedCell.isReturned = !returnedCell.isFound;
     returnedCells = getReturnedCells(logicGrid);
     if (returnedCells.length > 1) {
       if (returnedCells[0].idLink === returnedCells[1].idLink) {

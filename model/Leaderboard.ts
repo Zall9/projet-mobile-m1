@@ -15,6 +15,7 @@ export type ScoreRow = {
 
 export class Leaderboard {
   public static NB_PPL_PER_LINE: number = 5;
+  public static MAX_PRINTABLE_USERNAME: number = 11;
   db: Database;
   datas!: ScoreRow[];
 
@@ -51,7 +52,8 @@ export class Leaderboard {
    * @param page
    */
   public getLeaderboard(page: number): ScoreRow[] {
-    const lookedPage = this.getMaxPage() < page || page < 1 ? 1 : page;
+    const lookedPage =
+      this.getMaxPage() < page ? this.getMaxPage() : page < 1 ? 1 : page;
     return this.datas.slice(
       (lookedPage - 1) * Leaderboard.NB_PPL_PER_LINE,
       lookedPage * Leaderboard.NB_PPL_PER_LINE
@@ -62,7 +64,7 @@ export class Leaderboard {
    * Gives the current maximal page index
    */
   public getMaxPage() {
-    return Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 1;
+    return Math.floor(this.datas.length / Leaderboard.NB_PPL_PER_LINE - 1) + 2;
   }
 
   /**

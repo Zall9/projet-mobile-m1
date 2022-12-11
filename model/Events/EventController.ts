@@ -37,7 +37,6 @@ export class EventController {
   }
 
   static getByClassRequirement(classe: string): IEvent {
-    console.log("classe", classe);
     const foundIEvent: IEvent = this.getById("StartingEvent" + classe);
     return foundIEvent.id !== "Unknown" ? foundIEvent : this.pickRandomEvent();
   }

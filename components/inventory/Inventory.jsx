@@ -17,8 +17,6 @@ const Inventory = (props) => {
       id: 4,
     },
   ];
-  console.log("inventory", inventory);
-
   return (
     <Box
       sx={{

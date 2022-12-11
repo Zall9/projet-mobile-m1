@@ -17,7 +17,6 @@ export default function game() {
   );
 
   useEffect(() => {
-    console.log("UE DE BASE", playerClass, currentEvent);
     localStorage.setItem("precedentPage", "/game");
     const ldb = new Leaderboard();
     ldb.init().then(() => {
@@ -31,9 +30,7 @@ export default function game() {
   }, []);
 
   useEffect(() => {
-    console.log("UE PC", playerClass);
     if (playerClass && playerClass.nom !== defaultClass.nom) {
-      console.log("hbue", hasBeenUseEffected);
       setCurrentEvent(
         localStorage.getItem("nextEvent")
           ? EventController.getById(localStorage.getItem("nextEvent") as string)
@@ -46,7 +43,6 @@ export default function game() {
   }, [playerClass]);
 
   useEffect(() => {
-    console.log("UE CE", currentEvent);
     if (currentEvent.id !== "Unknown") {
       localStorage.setItem("nextEvent", currentEvent.id);
     }
