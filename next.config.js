@@ -1,35 +1,14 @@
 /** @type {import('next').NextConfig} */
-var authDomain = require("./model/ServerSideDB/config.json").authDomain
-const runtimeCaching = require("next-pwa/cache")
-const withPWA = require("next-pwa")
-// const withPWA = require("next-pwa")({
-//     dest: "public",
-//     register:true,
-//     skipWaiting:true,
-//     runtimeCaching,
-//     buildExcludes: [/middleware-manifest.json$/]
-// });
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
 const NextConfig = {
-    images: {
-        domains: [authDomain],
-    },
+  images: {
+    domains: ["localhost"],
+  },
+  sass: true,
+  modules: true,
 };
-module.exports = {
-
-    ...NextConfig,
-    ...withPWA({
-        reactStrictMode: true,
-        pwa: {
-            dest: "public",
-            register: true,
-            skipWaiting: true,
-            runtimeCaching,
-            buildExcludes: [/middleware-manifest.json$/],
-            disable: process.env.NODE_ENV === "development",
-        },
-    }),
-    webpack: (config) => {
-        config.resolve.fallback = {...config.resolve.fallback, fs: false};
-        return config;
-    },
-};
+module.exports = withPWA({
+  ...NextConfig,
+});
