@@ -35,7 +35,7 @@ export class MemoryCaseTemplate implements CaseTemplate {
   }
 }
 
-// Faire une liste de 36 images à faire apparaître dans le jeu de memory
+// liste d'images pour le jeu de memoire
 const imageList: ReactElement[] = [
   <></>,
   <Memory1 boxSize={12} />,
@@ -53,6 +53,11 @@ const imageList: ReactElement[] = [
 ];
 const backImage: ReactElement = <BackIcon boxSize={12} />;
 
+/**
+ * Il renvoie un tableau de toutes les cellules qui ont été retournées
+ * @param {GridMinigame} logicGrid - GridMinigame - La grille qui contient la logique du jeu.
+ * @returns Un tableau de MemoryCaseTemplate
+ */
 function getReturnedCells(logicGrid: GridMinigame) {
   const rc: MemoryCaseTemplate[] = [];
   logicGrid.forEach((row) => {
@@ -64,6 +69,13 @@ function getReturnedCells(logicGrid: GridMinigame) {
   return rc;
 }
 
+/**
+ * prend un index et le nombre de colonnes de la grille
+ * renvoie une chaîne représentant la colonne et la ligne de l'index
+ * @param {number} index - l'indice de la cellule dans le tableau
+ * @param {number} nbCol - le nombre de colonnes dans la grille
+ * @returns La colonne et la ligne de la cellule.
+ */
 function transformCoord(index: number, nbCol: number) {
   const col = String.fromCharCode("A".charCodeAt(0) + (index % nbCol));
   const row = Math.floor(index / nbCol).toString();

@@ -16,6 +16,7 @@ export default function MinigameComponent() {
 
   let [minigame, setMinigame] = useState<IMinigame>(minigameInfos);
   let [reset, sr] = useState(false);
+  /* Définir le mini-jeu sur celui qui a été sélectionné dans la page de sélection des mini-jeux. */
   useEffect(() => {
     localStorage.setItem("precedentPage", "/minigame");
     const miniGameId = localStorage.getItem("miniGameId");
@@ -46,7 +47,8 @@ export default function MinigameComponent() {
 
   let [updateGrid, setUpdateGrid] = useState(false);
   let [logicGridToUpdate, setLogicGrid] = useState(logicGrid);
-  //@ts-ignore
+
+  /* Un useEffect qui est appelé chaque fois que l'état updateGrid change. */
   useEffect(() => {
     //@ts-ignore
     const myInterval = setInterval(() => {

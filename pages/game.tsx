@@ -6,6 +6,7 @@ import { EventController } from "../model/Events/EventController";
 import { Leaderboard } from "../model/Leaderboard";
 
 export default function game() {
+  // récupération des classes
   EventController.init();
   let [hasBeenUseEffected, setHasBeenUseEffected] = useState(false);
   const defaultClass = ClassController.getById("Unknown");
@@ -16,6 +17,8 @@ export default function game() {
     EventController.getById("Unknown")
   );
 
+  /* Définir la page précédente sur le jeu, puis obtenir l'utilisateur du classement et définir la classe de joueur sur la
+    classe d'utilisateur. */
   useEffect(() => {
     localStorage.setItem("precedentPage", "/game");
     const ldb = new Leaderboard();
@@ -29,6 +32,7 @@ export default function game() {
     });
   }, []);
 
+  /* Un hook useEffect qui est appelé lorsque la playerClass change. */
   useEffect(() => {
     if (playerClass && playerClass.nom !== defaultClass.nom) {
       setCurrentEvent(
@@ -42,6 +46,7 @@ export default function game() {
     setHasBeenUseEffected(true);
   }, [playerClass]);
 
+  /* Enregistrement de l'événement en cours dans le localstorage. */
   useEffect(() => {
     if (currentEvent.id !== "Unknown") {
       localStorage.setItem("nextEvent", currentEvent.id);

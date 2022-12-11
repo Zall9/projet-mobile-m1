@@ -107,6 +107,9 @@ const LeaderboardPage = () => {
     });
   }, [page]);
 
+  /**
+   * revient à la page précédente.
+   */
   function goBack() {
     router.push(localStorage.getItem("precedentPage") ?? "/").then(() => null);
   }
