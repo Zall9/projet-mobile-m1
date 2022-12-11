@@ -6,7 +6,7 @@ import {
   SetUpdateGrid,
 } from "../IMinigame";
 import { Direction } from "../../Events/IOutput";
-import { Center, Grid, GridItem, IconButton } from "@chakra-ui/react";
+import { Box, Center, Grid, GridItem, IconButton } from "@chakra-ui/react";
 import { Panier } from "../../../components/icons/Panier";
 import { Cerise } from "../../../components/icons/Cerise";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
@@ -25,7 +25,15 @@ export class PanierCaseTemplate implements CaseTemplate {
 export const minigameInfos: IMinigame = {
   Controls(logicGrid: GridMinigame): ReactElement {
     return (
-      <>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "3em",
+        }}
+      >
         <IconButton
           aria-label="left"
           icon={<ArrowLeftIcon />}
@@ -36,7 +44,7 @@ export const minigameInfos: IMinigame = {
           icon={<ArrowRightIcon />}
           onClick={() => this.playerInput("right", logicGrid)}
         />{" "}
-      </>
+      </Box>
     );
   },
   refreshInterval: 150,
@@ -74,18 +82,14 @@ export const minigameInfos: IMinigame = {
         templateColumns={`repeat(${this.nbCol},auto)`}
         sx={{
           height: "85vh",
-          width: "min(80vh,80vh)",
+          backgroundImage: `url("/static/images/backgrounds/panierFont.png")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       >
         {parameters.map((v) => (
           <Center>
-            <GridItem
-              colSpan={1}
-              rowSpan={1}
-              backgroundColor="gray.500"
-              w="42px"
-              h="42px"
-            >
+            <GridItem colSpan={1} rowSpan={1} w="42px" h="42px">
               {v}
             </GridItem>
           </Center>

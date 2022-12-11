@@ -1,0 +1,161 @@
+[debug] [2022-12-11T11:44:00.833Z] ----------------------------------------------------------------------
+[debug] [2022-12-11T11:44:00.835Z] Command:       /usr/bin/firebase /home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-12-11T11:44:00.836Z] CLI Version:   11.17.0
+[debug] [2022-12-11T11:44:00.836Z] Platform:      linux
+[debug] [2022-12-11T11:44:00.836Z] Node Version:  v16.16.0
+[debug] [2022-12-11T11:44:00.836Z] Time:          Sun Dec 11 2022 12:44:00 GMT+0100 (GMT+01:00)
+[debug] [2022-12-11T11:44:00.837Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-11T11:44:00.887Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-11T11:44:00.887Z] > authorizing via signed-in user (bernardelifer18@gmail.com)
+[debug] [2022-12-11T11:44:00.888Z] [iam] checking project projet-mobile-m1-22222 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-11T11:44:00.889Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions [none]
+[debug] [2022-12-11T11:44:00.890Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions x-goog-quota-user=projects/projet-mobile-m1-22222
+[debug] [2022-12-11T11:44:00.890Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:44:01.666Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions 200
+[debug] [2022-12-11T11:44:01.666Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:44:01.667Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 [none]
+[debug] [2022-12-11T11:44:01.956Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 200
+[debug] [2022-12-11T11:44:01.956Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 {"projectId":"projet-mobile-m1-22222","projectNumber":"95370679054","displayName":"projet-mobile-m1","name":"projects/projet-mobile-m1-22222","resources":{"hostingSite":"projet-mobile-m1-22222","realtimeDatabaseInstance":"projet-mobile-m1-22222-default-rtdb"},"state":"ACTIVE","etag":"1_3306f281-dfeb-45ca-a579-d1e0bb1cedf9"}
+[debug] [2022-12-11T11:44:04.451Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites pageToken=&pageSize=10
+[debug] [2022-12-11T11:44:05.401Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites 200
+[debug] [2022-12-11T11:44:05.402Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites {"sites":[{"name":"projects/projet-mobile-m1-22222/sites/ov3r-tale","defaultUrl":"https://ov3r-tale.web.app","appId":"1:95370679054:web:8c0496c1560d84e40e7d5f","type":"USER_SITE"},{"name":"projects/projet-mobile-m1-22222/sites/projet-mobile-m1-22222","defaultUrl":"https://projet-mobile-m1-22222.web.app","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-11T11:44:05.402Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config [none]
+[debug] [2022-12-11T11:45:23.989Z] ----------------------------------------------------------------------
+[debug] [2022-12-11T11:45:23.991Z] Command:       /usr/bin/firebase /home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init hosting
+[debug] [2022-12-11T11:45:23.991Z] CLI Version:   11.17.0
+[debug] [2022-12-11T11:45:23.991Z] Platform:      linux
+[debug] [2022-12-11T11:45:23.991Z] Node Version:  v16.16.0
+[debug] [2022-12-11T11:45:23.991Z] Time:          Sun Dec 11 2022 12:45:23 GMT+0100 (GMT+01:00)
+[debug] [2022-12-11T11:45:23.992Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-11T11:45:24.045Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-11T11:45:24.045Z] > authorizing via signed-in user (bernardelifer18@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /home/deliferp/Documents/projet_mobile_react/test/progressive-web-app
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2022-12-11T11:45:24.051Z] Using project from CLI flag: projet-mobile-m1-22222
+[debug] [2022-12-11T11:45:24.053Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 [none]
+[debug] [2022-12-11T11:45:24.362Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 200
+[debug] [2022-12-11T11:45:24.363Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 {"projectId":"projet-mobile-m1-22222","projectNumber":"95370679054","displayName":"projet-mobile-m1","name":"projects/projet-mobile-m1-22222","resources":{"hostingSite":"projet-mobile-m1-22222","realtimeDatabaseInstance":"projet-mobile-m1-22222-default-rtdb"},"state":"ACTIVE","etag":"1_3306f281-dfeb-45ca-a579-d1e0bb1cedf9"}
+[info] i  Using project projet-mobile-m1-22222 (projet-mobile-m1) 
+[info] 
+=== Hosting Setup
+[debug] [2022-12-11T11:45:41.335Z] ----------------------------------------------------------------------
+[debug] [2022-12-11T11:45:41.337Z] Command:       /usr/bin/firebase /home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-12-11T11:45:41.337Z] CLI Version:   11.17.0
+[debug] [2022-12-11T11:45:41.337Z] Platform:      linux
+[debug] [2022-12-11T11:45:41.337Z] Node Version:  v16.16.0
+[debug] [2022-12-11T11:45:41.338Z] Time:          Sun Dec 11 2022 12:45:41 GMT+0100 (GMT+01:00)
+[debug] [2022-12-11T11:45:41.338Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-11T11:45:41.391Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-11T11:45:41.392Z] > authorizing via signed-in user (bernardelifer18@gmail.com)
+[debug] [2022-12-11T11:45:41.392Z] [iam] checking project projet-mobile-m1-22222 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-11T11:45:41.394Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions [none]
+[debug] [2022-12-11T11:45:41.394Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions x-goog-quota-user=projects/projet-mobile-m1-22222
+[debug] [2022-12-11T11:45:41.394Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:45:42.215Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions 200
+[debug] [2022-12-11T11:45:42.215Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:45:42.216Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 [none]
+[debug] [2022-12-11T11:45:42.491Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 200
+[debug] [2022-12-11T11:45:42.492Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 {"projectId":"projet-mobile-m1-22222","projectNumber":"95370679054","displayName":"projet-mobile-m1","name":"projects/projet-mobile-m1-22222","resources":{"hostingSite":"projet-mobile-m1-22222","realtimeDatabaseInstance":"projet-mobile-m1-22222-default-rtdb"},"state":"ACTIVE","etag":"1_3306f281-dfeb-45ca-a579-d1e0bb1cedf9"}
+[debug] [2022-12-11T11:45:45.291Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites pageToken=&pageSize=10
+[debug] [2022-12-11T11:45:46.300Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites 200
+[debug] [2022-12-11T11:45:46.300Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites {"sites":[{"name":"projects/projet-mobile-m1-22222/sites/ov3r-tale","defaultUrl":"https://ov3r-tale.web.app","appId":"1:95370679054:web:8c0496c1560d84e40e7d5f","type":"USER_SITE"},{"name":"projects/projet-mobile-m1-22222/sites/projet-mobile-m1-22222","defaultUrl":"https://projet-mobile-m1-22222.web.app","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-11T11:45:46.301Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config [none]
+[debug] [2022-12-11T11:45:47.431Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config 200
+[debug] [2022-12-11T11:45:47.431Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config {"projectId":"projet-mobile-m1-22222","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","databaseURL":"https://projet-mobile-m1-22222-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"projet-mobile-m1-22222.appspot.com","apiKey":"AIzaSyDK0dJw7_eizeBdsopEKf-IWPtlqjRKH-E","authDomain":"projet-mobile-m1-22222.firebaseapp.com","messagingSenderId":"95370679054"}
+[debug] [2022-12-11T11:46:11.446Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2115:30)
+    at prepareFrameworks (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:329:42)
+    at async deploy (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-12-11T11:47:57.911Z] ----------------------------------------------------------------------
+[debug] [2022-12-11T11:47:57.912Z] Command:       /usr/bin/firebase /home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-12-11T11:47:57.913Z] CLI Version:   11.17.0
+[debug] [2022-12-11T11:47:57.913Z] Platform:      linux
+[debug] [2022-12-11T11:47:57.913Z] Node Version:  v16.16.0
+[debug] [2022-12-11T11:47:57.913Z] Time:          Sun Dec 11 2022 12:47:57 GMT+0100 (GMT+01:00)
+[debug] [2022-12-11T11:47:57.914Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-11T11:47:57.962Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-11T11:47:57.962Z] > authorizing via signed-in user (bernardelifer18@gmail.com)
+[debug] [2022-12-11T11:47:57.962Z] [iam] checking project projet-mobile-m1-22222 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-11T11:47:57.964Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions [none]
+[debug] [2022-12-11T11:47:57.964Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions x-goog-quota-user=projects/projet-mobile-m1-22222
+[debug] [2022-12-11T11:47:57.965Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:47:58.704Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions 200
+[debug] [2022-12-11T11:47:58.705Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:47:58.707Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 [none]
+[debug] [2022-12-11T11:47:58.973Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 200
+[debug] [2022-12-11T11:47:58.973Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 {"projectId":"projet-mobile-m1-22222","projectNumber":"95370679054","displayName":"projet-mobile-m1","name":"projects/projet-mobile-m1-22222","resources":{"hostingSite":"projet-mobile-m1-22222","realtimeDatabaseInstance":"projet-mobile-m1-22222-default-rtdb"},"state":"ACTIVE","etag":"1_3306f281-dfeb-45ca-a579-d1e0bb1cedf9"}
+[debug] [2022-12-11T11:48:01.913Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites pageToken=&pageSize=10
+[debug] [2022-12-11T11:48:02.900Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites 200
+[debug] [2022-12-11T11:48:02.900Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites {"sites":[{"name":"projects/projet-mobile-m1-22222/sites/ov3r-tale","defaultUrl":"https://ov3r-tale.web.app","appId":"1:95370679054:web:8c0496c1560d84e40e7d5f","type":"USER_SITE"},{"name":"projects/projet-mobile-m1-22222/sites/projet-mobile-m1-22222","defaultUrl":"https://projet-mobile-m1-22222.web.app","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-11T11:48:02.901Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config [none]
+[debug] [2022-12-11T11:48:03.790Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config 200
+[debug] [2022-12-11T11:48:03.790Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config {"projectId":"projet-mobile-m1-22222","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","databaseURL":"https://projet-mobile-m1-22222-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"projet-mobile-m1-22222.appspot.com","apiKey":"AIzaSyDK0dJw7_eizeBdsopEKf-IWPtlqjRKH-E","authDomain":"projet-mobile-m1-22222.firebaseapp.com","messagingSenderId":"95370679054"}
+[debug] [2022-12-11T11:48:38.052Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2115:30)
+    at prepareFrameworks (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:329:42)
+    at async deploy (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-12-11T11:51:59.445Z] ----------------------------------------------------------------------
+[debug] [2022-12-11T11:51:59.447Z] Command:       /usr/bin/firebase /home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase deploy
+[debug] [2022-12-11T11:51:59.447Z] CLI Version:   11.17.0
+[debug] [2022-12-11T11:51:59.448Z] Platform:      linux
+[debug] [2022-12-11T11:51:59.448Z] Node Version:  v16.16.0
+[debug] [2022-12-11T11:51:59.448Z] Time:          Sun Dec 11 2022 12:51:59 GMT+0100 (GMT+01:00)
+[debug] [2022-12-11T11:51:59.448Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-12-11T11:51:59.495Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-12-11T11:51:59.495Z] > authorizing via signed-in user (bernardelifer18@gmail.com)
+[debug] [2022-12-11T11:51:59.495Z] [iam] checking project projet-mobile-m1-22222 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-12-11T11:51:59.497Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions [none]
+[debug] [2022-12-11T11:51:59.498Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions x-goog-quota-user=projects/projet-mobile-m1-22222
+[debug] [2022-12-11T11:51:59.498Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:52:00.275Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions 200
+[debug] [2022-12-11T11:52:00.275Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/projet-mobile-m1-22222:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-12-11T11:52:00.277Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 [none]
+[debug] [2022-12-11T11:52:00.567Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 200
+[debug] [2022-12-11T11:52:00.568Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/projet-mobile-m1-22222 {"projectId":"projet-mobile-m1-22222","projectNumber":"95370679054","displayName":"projet-mobile-m1","name":"projects/projet-mobile-m1-22222","resources":{"hostingSite":"projet-mobile-m1-22222","realtimeDatabaseInstance":"projet-mobile-m1-22222-default-rtdb"},"state":"ACTIVE","etag":"1_3306f281-dfeb-45ca-a579-d1e0bb1cedf9"}
+[debug] [2022-12-11T11:52:03.631Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites pageToken=&pageSize=10
+[debug] [2022-12-11T11:52:04.667Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites 200
+[debug] [2022-12-11T11:52:04.667Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/projet-mobile-m1-22222/sites {"sites":[{"name":"projects/projet-mobile-m1-22222/sites/ov3r-tale","defaultUrl":"https://ov3r-tale.web.app","appId":"1:95370679054:web:8c0496c1560d84e40e7d5f","type":"USER_SITE"},{"name":"projects/projet-mobile-m1-22222/sites/projet-mobile-m1-22222","defaultUrl":"https://projet-mobile-m1-22222.web.app","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","type":"DEFAULT_SITE"}]}
+[debug] [2022-12-11T11:52:04.667Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config [none]
+[debug] [2022-12-11T11:52:05.586Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config 200
+[debug] [2022-12-11T11:52:05.586Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:95370679054:web:395cfebdf729d5730e7d5f/config {"projectId":"projet-mobile-m1-22222","appId":"1:95370679054:web:395cfebdf729d5730e7d5f","databaseURL":"https://projet-mobile-m1-22222-default-rtdb.europe-west1.firebasedatabase.app","storageBucket":"projet-mobile-m1-22222.appspot.com","apiKey":"AIzaSyDK0dJw7_eizeBdsopEKf-IWPtlqjRKH-E","authDomain":"projet-mobile-m1-22222.firebaseapp.com","messagingSenderId":"95370679054"}
+[debug] [2022-12-11T11:52:30.867Z] Error: Command failed: npm i --omit dev --no-audit
+    at checkExecSyncError (node:child_process:828:11)
+    at Object.execSync (node:child_process:899:15)
+    at execSync (pkg/prelude/bootstrap.js:2115:30)
+    at prepareFrameworks (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/frameworks/index.js:329:42)
+    at async deploy (/home/deliferp/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
