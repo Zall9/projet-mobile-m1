@@ -64,7 +64,7 @@ export const minigameInfos: IMinigame = {
   setUpdateGrid: () => null,
   setLogicGrid: () => null,
   nbRow: 1,
-  nbCol: 4,
+  nbCol: 2,
   score: 0,
   scoreTresh: 5,
   player: {
