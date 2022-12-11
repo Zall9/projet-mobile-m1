@@ -2,21 +2,21 @@ import React from "react";
 import { Box, Image, Text } from "@chakra-ui/react";
 import LifeBar from "./LifeBar";
 
-const Ennemy = (props: { name: string }) => {
+const Ennemy = (props: { name: string; currLife: number }) => {
   const name: string = props.name;
-
-  const [health, setHealth] = React.useState(3);
+  const health = props.currLife;
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        justifyContent: "center",
       }}
     >
-      <LifeBar bgcolor={"#6a1b9a"} completed={health * 33.3} />
+      <LifeBar bgcolor={"#6a1b9a"} completed={props.currLife} />
 
-      <Image src={"/ennemies/" + name + ".png"} w={"min(25vh,25vw)"} />
+      <Image src={"/ennemies/" + name + ".png"} w={"min(20vh,20vw)"} />
     </Box>
   );
 };
