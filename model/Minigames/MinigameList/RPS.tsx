@@ -85,7 +85,8 @@ export const minigameInfos: IMinigame = {
       >
         <Center>
           <GridItem colSpan={2}>
-            {(logicGrid.get("A") as RPSCaseTemplate[])[0].whatElement !== -1 ? (
+            {(logicGrid.get("A") as RPSCaseTemplate[])[0].whatElement !==
+            RPSEnum.None ? (
               rpsIcon[(logicGrid.get("A") as RPSCaseTemplate[])[0].whatElement]
             ) : (
               <></>
@@ -94,7 +95,8 @@ export const minigameInfos: IMinigame = {
         </Center>
         <Center>
           <GridItem colSpan={2}>
-            {(logicGrid.get("B") as RPSCaseTemplate[])[0].whatElement !== -1 ? (
+            {(logicGrid.get("B") as RPSCaseTemplate[])[0].whatElement !==
+            RPSEnum.None ? (
               rpsIcon[(logicGrid.get("B") as RPSCaseTemplate[])[0].whatElement]
             ) : (
               <></>
@@ -126,7 +128,8 @@ export const minigameInfos: IMinigame = {
       ia.whatElement = RPSEnum.None;
     } else {
       // Play and play result
-      player.whatElement = Object.keys(RPSEnum).findIndex((e) => e == input);
+      player.whatElement =
+        Object.keys(RPSEnum).findIndex((e) => e == input) - 3;
       ia.whatElement = Math.floor(Math.random() * 3);
       if ((player.whatElement - ia.whatElement) % 3 == 1) {
         this.score += 1;
