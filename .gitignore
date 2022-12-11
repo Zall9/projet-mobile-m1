@@ -45,5 +45,5 @@ next-env.d.ts
 /pages/index.js
 /.eslintrc.json
 
-/.firebase
-firebase-debug.log
+.idea
+/public/workbox-e13f827e.js
