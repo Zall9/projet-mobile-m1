@@ -22,7 +22,7 @@ import {
   Memory9,
 } from "../../../components/icons/MemoryIcons";
 import { ReactElement } from "react";
-import Ennemy from "../../../components/event/ennemy";
+import Ennemy from "../../../components/ennemy/ennemy";
 
 export class MemoryCaseTemplate implements CaseTemplate {
   isReturned: boolean;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Image, Text } from "@chakra-ui/react";
+import LifeBar from "./LifeBar";
 
 const Ennemy = (props: { name: string }) => {
   const name: string = props.name;
@@ -13,8 +14,8 @@ const Ennemy = (props: { name: string }) => {
         alignItems: "center",
       }}
     >
-      <Text>Health</Text>
-      <Text>{health}</Text>
+      <LifeBar bgcolor={"#6a1b9a"} completed={health * 33.3} />
+
       <Image src={"/ennemies/" + name + ".png"} w={"min(25vh,25vw)"} />
     </Box>
   );
