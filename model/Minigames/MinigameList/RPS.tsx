@@ -8,8 +8,11 @@ import {
 import { Box, Center, Grid, GridItem, IconButton } from "@chakra-ui/react";
 import { ReactElement } from "react";
 import {
+  PaperEnemyIcon,
   PaperIcon,
+  RockEnemyIcon,
   RockIcon,
+  ScissorsEnemyIcon,
   ScissorsIcon,
 } from "../../../components/icons/RPSIcons";
 import { breakpoints } from "../../../theme";
@@ -22,6 +25,9 @@ enum RPSEnum {
 }
 
 const rpsIcon = [
+  <RockEnemyIcon boxSize={breakpoints.rpsButtonSize} />,
+  <PaperEnemyIcon boxSize={breakpoints.rpsButtonSize} />,
+  <ScissorsEnemyIcon boxSize={breakpoints.rpsButtonSize} />,
   <RockIcon boxSize={breakpoints.rpsButtonSize} />,
   <PaperIcon boxSize={breakpoints.rpsButtonSize} />,
   <ScissorsIcon boxSize={breakpoints.rpsButtonSize} />,
@@ -53,7 +59,7 @@ export const minigameInfos: IMinigame = {
           .map((elem) => (
             <IconButton
               aria-label={elem}
-              icon={rpsIcon[RPSEnum[elem as keyof typeof RPSEnum]]}
+              icon={rpsIcon[RPSEnum[elem as keyof typeof RPSEnum] + 3]}
               onClick={() => this.playerInput(elem, logicGrid)}
             />
           ))}
@@ -128,8 +134,7 @@ export const minigameInfos: IMinigame = {
       ia.whatElement = RPSEnum.None;
     } else {
       // Play and play result
-      player.whatElement =
-        Object.keys(RPSEnum).findIndex((e) => e == input) - 3;
+      player.whatElement = Object.keys(RPSEnum).findIndex((e) => e == input);
       ia.whatElement = Math.floor(Math.random() * 3);
       if ((player.whatElement - ia.whatElement) % 3 == 1) {
         this.score += 1;
