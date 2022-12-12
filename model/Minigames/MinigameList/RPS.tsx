@@ -35,7 +35,7 @@ const rpsIcon = [
 ];
 
 export class RPSCaseTemplate implements CaseTemplate {
-  whatElement: RPSEnum = -1;
+  whatElement: RPSEnum = RPSEnum.None;
 
   constructor() {}
 }
