@@ -74,7 +74,7 @@ export default function MinigameComponent() {
   }, [updateGrid]);
   return (
     <>
-      {minigame && logicGridToUpdate.size ? (
+      {minigame && logicGridToUpdate.size == minigame.nbCol ? (
         <>
           <Center>
             <Box id="Grid">{minigame.ViewGrid(logicGridToUpdate)}</Box>
