@@ -33,7 +33,7 @@ const flicker = keyframes`
 /**
  * Il prend une énumération Direction et renvoie un objet avec une propriété top, bottom ou left/right
  * @param {Direction} direction - Le sens de la flèche.
- * @returns Un objet avec une clé de haut, bas ou gauche/droite, et une valeur d'une chaîne.
+ * @returns la position où placer l'icone sur l'écran
  */
 function positionFromDirection(direction: Direction): {
   [key: string]: string;
@@ -127,7 +127,8 @@ export default function EventBox(
               color="white"
               sx={{
                 position: "absolute",
-                backgroundColor: "rgba(0, 0, 0, 0)",
+                zIndex: "9999999999",
+                backgroundColor: "rgba(0, 0, 0, 0.5)",
                 ...positionFromDirection(output.direction),
               }}
               icon={stringToArrow[Direction[output.direction]]}
