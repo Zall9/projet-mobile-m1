@@ -14,7 +14,7 @@ export const eventInfos: IEvent = {
     },
     {
       direction: Direction.down,
-      nextEvent: "TentForest",
+      nextEvent: "ForestTent",
       willMinigame: false,
     },
   ],
