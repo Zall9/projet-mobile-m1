@@ -7,9 +7,9 @@ export abstract class IOutput {
 
 export enum Direction {
   up,
-  left,
-  down,
   right,
+  down,
+  left,
 }
 
 export const Unknown: IOutput = {

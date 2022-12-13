@@ -14,13 +14,15 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpIcon,
-  EditIcon,
 } from "@chakra-ui/icons";
 import { ReactElement } from "react";
 import { Cerise } from "../../../components/icons/Cerise";
+
+import { Leaderboard, ScoreRow } from "../../Leaderboard";
 import {
   PaperEnemyIcon,
   RockEnemyIcon,
+  ScissorsEnemyIcon,
 } from "../../../components/icons/RPSIcons";
 
 export class SnekCaseTemplate implements CaseTemplate {
@@ -31,16 +33,14 @@ export class SnekCaseTemplate implements CaseTemplate {
   }
 }
 
-const oldPositions: Coordinates[] = [];
-const lenPositions = 2;
+let oldPositions: Coordinates[];
+let lenPositions: number;
 
-// TODO : replacer par les icones correspondants
-const playerHead = [
-  <RockEnemyIcon />,
-  <RockEnemyIcon />,
-  <RockEnemyIcon />,
-  <RockEnemyIcon />,
-];
+const playerHead = (direction: Direction) => (
+  <RockEnemyIcon
+    sx={{ transform: "rotate(" + ((90 * direction) % 360) + "deg)" }}
+  />
+);
 
 function generateFruitInGrid(logicGrid: GridMinigame) {
   const keys = Array.from(logicGrid.keys());
@@ -57,12 +57,6 @@ function generateFruitInGrid(logicGrid: GridMinigame) {
   lane[pos.x].hasFruit = true;
 }
 
-const dirsCorresp = [2, 4, 12, 6];
-
-function getCurveRot(dirToPrec: Direction, dirToNext: Direction) {
-  return dirsCorresp.findIndex((v) => v == dirToPrec * dirToNext);
-}
-
 function getDir(cprec: Coordinates, cnext: Coordinates): Direction {
   if (cprec.x - cnext.x == 0)
     return 2 + cnext.y.charCodeAt(0) - cprec.y.charCodeAt(0);
@@ -73,34 +67,31 @@ function getPlayerCorpse(pos: number, player: MinigamePlayer) {
   const precedentC = pos == 0 ? player.position : oldPositions[pos - 1];
   const dirToPrec: Direction = getDir(precedentC, oldPositions[pos]);
   if (pos == lenPositions - 1) {
-    // Tail icon
     return (
-      <ArrowUpIcon
+      <ScissorsEnemyIcon
         sx={{ transform: "rotate(" + ((90 * dirToPrec) % 360) + "deg)" }}
       />
     );
   }
-  const nextC = oldPositions[pos + 1];
-  const dirToNext: Direction = getDir(oldPositions[pos], nextC);
-  if (precedentC.x == nextC.x || precedentC.y == nextC.y) {
-    // Straight body icon
-    return (
-      <PaperEnemyIcon
-        sx={{ transform: "rotate(" + ((90 * dirToPrec) % 360) + "deg)" }}
-      />
-    );
-  }
-  // Curved body icon, default up and right
+  return <PaperEnemyIcon />;
+}
+
+function isInvalidPosition(position: Coordinates, maxX: number, maxY: number) {
   return (
-    <EditIcon
-      sx={{
-        transform:
-          "rotate(" + ((90 * getCurveRot(dirToPrec, dirToNext)) % 360) + "deg)",
-      }}
-    />
+    position.x < 0 ||
+    position.x >= maxX ||
+    position.y.charCodeAt(0) < "A".charCodeAt(0) ||
+    position.y.charCodeAt(0) - maxY >= "A".charCodeAt(0)
   );
 }
 
+function getCaseOfPlayer(logicGrid: GridMinigame, player: MinigamePlayer) {
+  return (logicGrid.get(player.position.y) as SnekCaseTemplate[])[
+    player.position.x
+  ];
+}
+
+let ended: boolean;
 export const minigameInfos: IMinigame = {
   /* Les commandes du minijeu. */
   Controls(logicGrid: GridMinigame): ReactElement {
@@ -164,8 +155,9 @@ export const minigameInfos: IMinigame = {
       for (let j = 0; j < this.nbCol; j++) {
         parameters.push(
           this.player.position.x === i && this.player.position.y === cols[j] ? (
-            playerHead[this.player.direction]
-          ) : oldPositions.includes({ x: i, y: cols[j] }) ? (
+            playerHead(this.player.direction)
+          ) : oldPositions.findIndex((v) => v.x === i && v.y === cols[j]) !==
+            -1 ? (
             getPlayerCorpse(
               oldPositions.findIndex((v) => v.x === i && v.y === cols[j]),
               this.player
@@ -207,6 +199,9 @@ export const minigameInfos: IMinigame = {
     setUpdateGrid: SetUpdateGrid,
     setLogicGrid: SetGridMinigame
   ): void {
+    ended = false;
+    oldPositions = [];
+    lenPositions = 2;
     // On place le snek
     this.player.position.x = Math.floor(this.nbRow / 2);
     this.player.position.y = Array.from(logicGrid.keys())[
@@ -228,40 +223,75 @@ export const minigameInfos: IMinigame = {
   },
 
   caseTemplateCreate: () => new SnekCaseTemplate(),
-  /* Déplacer le joueur vers la gauche ou vers la droite. */
   playerInput(input: string): void {
-    // /* Déplacer le joueur vers la gauche ou vers la droite. */
-    // let oldPos = this.player.position.y.charCodeAt(0) - "A".charCodeAt(0);
-    // if (input === "left" && oldPos > 0) {
-    //   oldPos--;
-    // } else if (input === "right" && oldPos < 4) {
-    //   oldPos++;
-    // }
-    // this.player.position.y = String.fromCharCode("A".charCodeAt(0) + oldPos);
-    // this.setUpdateGrid(true);
+    if (ended) {
+      return;
+    }
+    if (
+      this.player.direction % 2 ==
+      Object.values(Direction).indexOf(input) % 2
+    )
+      return;
+    this.player.direction = Object.values(Direction).indexOf(input);
   },
-  /* La fonction qui est appelée à chaque fois que le jeu est mis à jour. Il est utilisé pour déplacer les fruits vers le
-																																					  bas et pour engendrer de nouveaux fruits. */
+
   evolve(logicGrid: GridMinigame): void {
-    // const logicGridCopy = new Map(
-    //   JSON.parse(JSON.stringify(Array.from(logicGrid)))
-    // ) as GridMinigame;
-    // logicGrid.forEach((row, i) => {
-    //   row.forEach((cell, j) => {
-    //     let realCell = cell as PanierCaseTemplate;
-    //     if (realCell.hasFruit) {
-    //       if (j === this.nbRow - 1) {
-    //         this.score += this.player.position.y === i ? 1 : 0;
-    //       } else {
-    //         (logicGridCopy.get(i) as PanierCaseTemplate[])[j + 1].hasFruit =
-    //           true;
-    //       }
-    //       (logicGridCopy.get(i) as PanierCaseTemplate[])[j].hasFruit = false;
-    //       realCell.hasFruit = false;
-    //     }
-    //   });
-    // });
-    // Math.random() < 1 / 3 ? spawnItems(logicGridCopy, this) : null;
-    // this.update(logicGridCopy);
+    if (ended) {
+      return;
+    }
+    const veryLastPos = JSON.parse(
+      JSON.stringify(oldPositions[lenPositions - 1])
+    );
+    for (let i = lenPositions - 1; i > 0; i--) {
+      oldPositions[i] = JSON.parse(JSON.stringify(oldPositions[i - 1]));
+    }
+    oldPositions[0] = JSON.parse(JSON.stringify(this.player.position));
+    switch (this.player.direction) {
+      case Direction.down:
+        this.player.position.x++;
+        break;
+      case Direction.up:
+        this.player.position.x--;
+        break;
+      case Direction.left:
+        this.player.position.y = String.fromCharCode(
+          this.player.position.y.charCodeAt(0) - 1
+        );
+        break;
+      case Direction.right:
+        this.player.position.y = String.fromCharCode(
+          this.player.position.y.charCodeAt(0) + 1
+        );
+        break;
+    }
+    if (
+      oldPositions.findIndex(
+        (v) => v.x === this.player.position.x && v.y === this.player.position.y
+      ) !== -1 ||
+      isInvalidPosition(this.player.position, this.nbRow, this.nbCol)
+    ) {
+      ended = true;
+      const ldb = new Leaderboard();
+      ldb.init().then(() => {
+        const user = ldb.getUser(
+          localStorage.getItem("username") as string
+        ) as ScoreRow;
+        user.score -= this.scoreTresh - this.score;
+        Leaderboard.updateUser(user as ScoreRow);
+        this.score = this.scoreTresh;
+        this.setUpdateGrid(true);
+      });
+      return;
+    }
+    const currC: SnekCaseTemplate = getCaseOfPlayer(logicGrid, this.player);
+    if (currC.hasFruit) {
+      this.score++;
+      currC.hasFruit = false;
+      lenPositions++;
+      oldPositions.push(JSON.parse(JSON.stringify(veryLastPos)));
+      generateFruitInGrid(logicGrid);
+    }
+    this.setLogicGrid(logicGrid);
+    this.setUpdateGrid(true);
   },
 };
