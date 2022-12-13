@@ -3,8 +3,8 @@ import { Direction } from "../IOutput";
 
 export const eventInfos: IEvent = {
   id: "CaveInterior3",
-  nom: "",
-  description: "",
+  nom: "Le bout du tunnel",
+  description: " Vous êtes au bout de la grotte.",
   image: "cave_interior_1",
   sorties: [
     {

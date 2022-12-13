@@ -3,8 +3,8 @@ import { Direction } from "../IOutput";
 
 export const eventInfos: IEvent = {
   id: "CaveEntry",
-  nom: "",
-  description: "",
+  nom: "Entrée de la grotte de la skow",
+  description: "Vous entrez dans une grotte.",
   image: "cave_entry",
   sorties: [
     {
