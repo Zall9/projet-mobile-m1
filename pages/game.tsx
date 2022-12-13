@@ -4,9 +4,15 @@ import Event from "../components/event/Event";
 import { ClassController } from "../model/Classes/ClassController";
 import { EventController } from "../model/Events/EventController";
 import { Leaderboard } from "../model/Leaderboard";
+import { IconButton } from "@chakra-ui/react";
+import { TrophyIcon } from "../components/icons/Trophy.icon";
+import { breakpoints } from "../theme";
+import { router } from "next/client";
+import { useRouter } from "next/router";
 
 export default function game() {
   // récupération des classes
+
   EventController.init();
   let [hasBeenUseEffected, setHasBeenUseEffected] = useState(false);
   const defaultClass = ClassController.getById("Unknown");
@@ -16,9 +22,10 @@ export default function game() {
   const [currentEvent, setCurrentEvent] = useState(
     EventController.getById("Unknown")
   );
+  let router = useRouter();
 
   /* Définir la page précédente sur le jeu, puis obtenir l'utilisateur du classement et définir la classe de joueur sur la
-    classe d'utilisateur. */
+                                      classe d'utilisateur. */
   useEffect(() => {
     localStorage.setItem("precedentPage", "/game");
     const ldb = new Leaderboard();
@@ -59,7 +66,30 @@ export default function game() {
         playerClass == defaultClass ? (
           <ChoiceClass RootSetPlayerClass={setPlayerClass}></ChoiceClass>
         ) : (
-          <Event setEvent={setCurrentEvent} event={currentEvent}></Event>
+          <>
+            <Event setEvent={setCurrentEvent} event={currentEvent}></Event>
+            <IconButton
+              sx={{
+                position: "absolute",
+                bottom: "90%",
+                background: "none",
+                "&:hover": {
+                  background: "none",
+                },
+                "&:focus": {
+                  background: "none",
+                },
+                "&:active": {
+                  background: "none",
+                },
+              }}
+              aria-label={"LeaderBoard"}
+              icon={<TrophyIcon boxSize={breakpoints.playButtonBoxSize} />}
+              onClick={() => {
+                router.push("/LeaderboardPage");
+              }}
+            ></IconButton>
+          </>
         )
       ) : (
         <></>
