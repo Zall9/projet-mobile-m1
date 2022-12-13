@@ -42,7 +42,8 @@ export default function MinigameComponent() {
   /* Un useEffect qui est appelé chaque fois que l'état updateGrid change. */
   useEffect(() => {
     const myInterval = setInterval(() => {
-      minigame.evolve(logicGridToUpdate);
+      if (minigame && logicGridToUpdate.size == minigame.nbCol)
+        minigame.evolve(logicGridToUpdate);
     }, minigame.refreshInterval);
     if (updateGrid) {
       if (minigame.score >= minigame.scoreTresh) {
