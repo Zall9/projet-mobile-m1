@@ -11,7 +11,7 @@ export const eventInfos: IEvent = {
       direction: Direction.up,
       nextEvent: "CaveInterior2",
       willMinigame: true,
-      whichMinigame: "RPS",
+      whichMinigame: Math.random() > 0.5 ? "Snek" : "RPS",
     },
   ],
 };
