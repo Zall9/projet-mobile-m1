@@ -17,6 +17,7 @@ import {
 } from "../../../components/icons/RPSIcons";
 import { breakpoints } from "../../../theme";
 import { Enemy } from "../../../components/enemy/Enemy";
+import { Direction } from "../../Events/IOutput";
 
 enum RPSEnum {
   Rock,
@@ -90,7 +91,7 @@ export const minigameInfos: IMinigame = {
       x: 0,
       y: "A",
     },
-    direction: [],
+    direction: Direction.left,
   },
   ViewGrid(logicGrid: GridMinigame) {
     return (

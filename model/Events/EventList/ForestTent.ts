@@ -22,7 +22,8 @@ export const eventInfos: IEvent = {
     {
       direction: Direction.right,
       nextEvent: "CaveEntry",
-      willMinigame: false,
+      willMinigame: true,
+      whichMinigame: "Snek",
     },
   ],
 };

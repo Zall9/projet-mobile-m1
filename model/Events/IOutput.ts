@@ -7,8 +7,8 @@ export abstract class IOutput {
 
 export enum Direction {
   up,
-  down,
   left,
+  down,
   right,
 }
 
