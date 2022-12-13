@@ -45,6 +45,10 @@ export default function MinigameComponent() {
     setUpdateGrid(true);
   }, [reset]);
 
+  useEffect(() => {
+    sr(false);
+  }, []);
+
   let [updateGrid, setUpdateGrid] = useState(false);
   let [logicGridToUpdate, setLogicGrid] = useState(logicGrid);
 
