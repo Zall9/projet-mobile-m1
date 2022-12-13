@@ -62,7 +62,7 @@ export const minigameInfos: IMinigame = {
       x: NBROW - 1,
       y: "A",
     },
-    direction: [Direction.left, Direction.right],
+    direction: Direction.left,
   },
 
   /**
@@ -163,7 +163,7 @@ export const minigameInfos: IMinigame = {
     this.setUpdateGrid(true);
   },
   /* La fonction qui est appelée à chaque fois que le jeu est mis à jour. Il est utilisé pour déplacer les fruits vers le
-																				bas et pour engendrer de nouveaux fruits. */
+																				  bas et pour engendrer de nouveaux fruits. */
   evolve(logicGrid: GridMinigame): void {
     const logicGridCopy = new Map(
       JSON.parse(JSON.stringify(Array.from(logicGrid)))

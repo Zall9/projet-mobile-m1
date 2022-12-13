@@ -4,7 +4,7 @@ let minigameIdList: string[];
 
 export class MinigameController {
   static init() {
-    minigameIdList = ["Memory", "Panier", "RPS"];
+    minigameIdList = ["Memory", "Panier", "RPS", "Snek"];
   }
 
   static getById(id: string): IMinigame {

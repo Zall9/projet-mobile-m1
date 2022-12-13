@@ -69,10 +69,10 @@ export type SetUpdateGrid = Dispatch<SetStateAction<boolean>>;
  * */
 export interface MinigamePlayer {
   position: Coordinates;
-  direction: Direction[];
+  direction: Direction;
 }
 
-type Coordinates = {
+export type Coordinates = {
   x: number;
   y: string;
 };

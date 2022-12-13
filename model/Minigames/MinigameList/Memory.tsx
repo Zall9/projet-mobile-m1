@@ -23,6 +23,7 @@ import {
 } from "../../../components/icons/MemoryIcons";
 import { ReactElement } from "react";
 import { Enemy } from "../../../components/enemy/Enemy";
+import { Direction } from "../../Events/IOutput";
 
 export class MemoryCaseTemplate implements CaseTemplate {
   isReturned: boolean;
@@ -150,7 +151,7 @@ export const minigameInfos: IMinigame = {
       x: 0,
       y: "A",
     },
-    direction: [],
+    direction: Direction.left,
   },
   init(
     logicGrid: GridMinigame,
