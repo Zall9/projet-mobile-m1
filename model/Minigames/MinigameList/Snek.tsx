@@ -29,6 +29,7 @@ import {
   Snake_head_Icon,
   Snake_tail_Icon,
 } from "../../../components/icons/snake.icons";
+import { breakpoints } from "../../../theme";
 
 export class SnekCaseTemplate implements CaseTemplate {
   hasFruit: boolean;
@@ -43,6 +44,7 @@ let lenPositions: number;
 
 const playerHead = (direction: Direction) => (
   <Snake_head_Icon
+    boxSize={breakpoints.playButtonBoxSize}
     sx={{ transform: "rotate(" + ((90 * direction) % 360) + "deg)" }}
   />
 );
@@ -74,11 +76,12 @@ function getPlayerCorpse(pos: number, player: MinigamePlayer) {
   if (pos == lenPositions - 1) {
     return (
       <Snake_tail_Icon
+        boxSize={breakpoints.playButtonBoxSize}
         sx={{ transform: "rotate(" + ((90 * dirToPrec) % 360) + "deg)" }}
       />
     );
   }
-  return <Snake_body_Icon />;
+  return <Snake_body_Icon boxSize={breakpoints.playButtonBoxSize} />;
 }
 
 function isInvalidPosition(position: Coordinates, maxX: number, maxY: number) {
