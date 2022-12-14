@@ -20,11 +20,6 @@ import { Cerise } from "../../../components/icons/Cerise";
 
 import { Leaderboard, ScoreRow } from "../../Leaderboard";
 import {
-  PaperEnemyIcon,
-  RockEnemyIcon,
-  ScissorsEnemyIcon,
-} from "../../../components/icons/RPSIcons";
-import {
   Snake_body_Icon,
   Snake_head_Icon,
   Snake_tail_Icon,
@@ -45,7 +40,7 @@ let lenPositions: number;
 const playerHead = (direction: Direction) => (
   <Snake_head_Icon
     boxSize={breakpoints.playButtonBoxSize}
-    sx={{ transform: "rotate(" + ((90 * direction) % 360) + "deg)" }}
+    sx={{ transform: "rotate(" + ((90 * direction - 90) % 360) + "deg)" }}
   />
 );
 
@@ -66,18 +61,18 @@ function generateFruitInGrid(logicGrid: GridMinigame) {
 
 function getDir(cprec: Coordinates, cnext: Coordinates): Direction {
   if (cprec.x - cnext.x == 0)
-    return 2 + cnext.y.charCodeAt(0) - cprec.y.charCodeAt(0);
+    return cnext.y.charCodeAt(0) - cprec.y.charCodeAt(0);
   return 1 + cnext.x - cprec.x;
 }
 
 function getPlayerCorpse(pos: number, player: MinigamePlayer) {
   const precedentC = pos == 0 ? player.position : oldPositions[pos - 1];
-  const dirToPrec: Direction = getDir(precedentC, oldPositions[pos]);
+  const dirToPrec: Direction = getDir(precedentC, oldPositions[pos]) + 2;
   if (pos == lenPositions - 1) {
     return (
       <Snake_tail_Icon
         boxSize={breakpoints.playButtonBoxSize}
-        sx={{ transform: "rotate(" + ((90 * dirToPrec) % 360) + "deg)" }}
+        sx={{ transform: "rotate(" + ((90 * dirToPrec - 90) % 360) + "deg)" }}
       />
     );
   }
@@ -137,7 +132,7 @@ export const minigameInfos: IMinigame = {
     );
   },
   //intervale pour refresh la vue
-  refreshInterval: 440,
+  refreshInterval: 2000,
   setUpdateGrid: () => null,
   setLogicGrid: () => null,
   nbRow: 10,
