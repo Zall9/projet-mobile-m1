@@ -24,6 +24,7 @@ import {
   RockEnemyIcon,
   ScissorsEnemyIcon,
 } from "../../../components/icons/RPSIcons";
+import { Snake_tail_Icon } from "../../../components/icons/snake.icons";
 
 export class SnekCaseTemplate implements CaseTemplate {
   hasFruit: boolean;
@@ -37,7 +38,7 @@ let oldPositions: Coordinates[];
 let lenPositions: number;
 
 const playerHead = (direction: Direction) => (
-  <RockEnemyIcon
+  <Snake_tail_Icon
     sx={{ transform: "rotate(" + ((90 * direction) % 360) + "deg)" }}
   />
 );
