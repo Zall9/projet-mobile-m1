@@ -39,7 +39,7 @@ let lenPositions: number;
 
 const playerHead = (direction: Direction) => (
   <Snake_head_Icon
-    boxSize={breakpoints.playButtonBoxSize}
+    boxSize={12}
     sx={{ transform: "rotate(" + ((90 * direction - 90) % 360) + "deg)" }}
   />
 );
@@ -71,12 +71,12 @@ function getPlayerCorpse(pos: number, player: MinigamePlayer) {
   if (pos == lenPositions - 1) {
     return (
       <Snake_tail_Icon
-        boxSize={breakpoints.playButtonBoxSize}
+        boxSize={12}
         sx={{ transform: "rotate(" + ((90 * dirToPrec - 90) % 360) + "deg)" }}
       />
     );
   }
-  return <Snake_body_Icon boxSize={breakpoints.playButtonBoxSize} />;
+  return <Snake_body_Icon boxSize={12} />;
 }
 
 function isInvalidPosition(position: Coordinates, maxX: number, maxY: number) {
@@ -100,13 +100,7 @@ export const minigameInfos: IMinigame = {
   Controls(logicGrid: GridMinigame): ReactElement {
     return (
       <Center>
-        <Grid
-          templateColumns="repeat(5,1fr)"
-          gap={3}
-          sx={{
-            width: "min(33vh, 33vw)",
-          }}
-        >
+        <Grid templateColumns="repeat(5,1fr)" gap={3} sx={{}}>
           <GridItem colSpan={2} />
           <GridItem colSpan={1}>
             <IconButton
