@@ -8,7 +8,7 @@ import {
   SetUpdateGrid,
 } from "../IMinigame";
 import { Direction } from "../../Events/IOutput";
-import { Box, Center, Grid, GridItem, IconButton } from "@chakra-ui/react";
+import { Center, Grid, GridItem, IconButton } from "@chakra-ui/react";
 import {
   ArrowDownIcon,
   ArrowLeftIcon,
@@ -148,7 +148,7 @@ export const minigameInfos: IMinigame = {
     );
   },
   //intervale pour refresh la vue
-  refreshInterval: 2000,
+  refreshInterval: 440,
   setUpdateGrid: () => null,
   setLogicGrid: () => null,
   nbRow: 10,
