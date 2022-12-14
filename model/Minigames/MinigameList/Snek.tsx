@@ -24,7 +24,11 @@ import {
   RockEnemyIcon,
   ScissorsEnemyIcon,
 } from "../../../components/icons/RPSIcons";
-import { Snake_tail_Icon } from "../../../components/icons/snake.icons";
+import {
+  Snake_body_Icon,
+  Snake_head_Icon,
+  Snake_tail_Icon,
+} from "../../../components/icons/snake.icons";
 
 export class SnekCaseTemplate implements CaseTemplate {
   hasFruit: boolean;
@@ -38,7 +42,7 @@ let oldPositions: Coordinates[];
 let lenPositions: number;
 
 const playerHead = (direction: Direction) => (
-  <Snake_tail_Icon
+  <Snake_head_Icon
     sx={{ transform: "rotate(" + ((90 * direction) % 360) + "deg)" }}
   />
 );
@@ -69,12 +73,12 @@ function getPlayerCorpse(pos: number, player: MinigamePlayer) {
   const dirToPrec: Direction = getDir(precedentC, oldPositions[pos]);
   if (pos == lenPositions - 1) {
     return (
-      <ScissorsEnemyIcon
+      <Snake_tail_Icon
         sx={{ transform: "rotate(" + ((90 * dirToPrec) % 360) + "deg)" }}
       />
     );
   }
-  return <PaperEnemyIcon />;
+  return <Snake_body_Icon />;
 }
 
 function isInvalidPosition(position: Coordinates, maxX: number, maxY: number) {
