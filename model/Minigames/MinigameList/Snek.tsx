@@ -188,8 +188,6 @@ export const minigameInfos: IMinigame = {
         <Grid
           templateColumns={`repeat(${this.nbCol},auto)`}
           sx={{
-            height: "50vh",
-            width: "50vw",
             backgroundImage: `url("/static/images/backgrounds/panierFont.png")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
