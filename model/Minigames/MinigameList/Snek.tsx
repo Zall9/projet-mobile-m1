@@ -99,36 +99,52 @@ export const minigameInfos: IMinigame = {
   /* Les commandes du minijeu. */
   Controls(logicGrid: GridMinigame): ReactElement {
     return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "3em",
-        }}
-      >
-        <IconButton
-          aria-label="left"
-          icon={<ArrowLeftIcon />}
-          onClick={() => this.playerInput("left", logicGrid)}
-        />
-        <IconButton
-          aria-label="right"
-          icon={<ArrowRightIcon />}
-          onClick={() => this.playerInput("right", logicGrid)}
-        />
-        <IconButton
-          aria-label="up"
-          icon={<ArrowUpIcon />}
-          onClick={() => this.playerInput("up", logicGrid)}
-        />
-        <IconButton
-          aria-label="down"
-          icon={<ArrowDownIcon />}
-          onClick={() => this.playerInput("down", logicGrid)}
-        />
-      </Box>
+      <Center>
+        <Grid
+          templateColumns="repeat(5,1fr)"
+          gap={3}
+          sx={{
+            width: "min(33vh, 33vw)",
+          }}
+        >
+          <GridItem colSpan={2} />
+          <GridItem colSpan={1}>
+            <IconButton
+              aria-label="up"
+              icon={<ArrowUpIcon />}
+              onClick={() => this.playerInput("up", logicGrid)}
+            />
+          </GridItem>
+          <GridItem colSpan={2} />
+
+          <GridItem colSpan={1}>
+            <IconButton
+              aria-label="left"
+              icon={<ArrowLeftIcon />}
+              onClick={() => this.playerInput("left", logicGrid)}
+            />
+          </GridItem>
+          <GridItem colSpan={3} />
+          <GridItem colSpan={1}>
+            <IconButton
+              aria-label="right"
+              icon={<ArrowRightIcon />}
+              onClick={() => this.playerInput("right", logicGrid)}
+            />
+          </GridItem>
+
+          <GridItem colSpan={2} />
+
+          <GridItem colSpan={1}>
+            <IconButton
+              aria-label="down"
+              icon={<ArrowDownIcon />}
+              onClick={() => this.playerInput("down", logicGrid)}
+            />
+          </GridItem>
+          <GridItem colSpan={2} />
+        </Grid>
+      </Center>
     );
   },
   //intervale pour refresh la vue
