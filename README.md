@@ -27,7 +27,7 @@ mini jeux en tout genre (générique, donc possibilité d'en rajouter (voir en d
 <li> Le remplir avec ses propres infos</li>
 <li> Rajouter <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/public/static/images/events/">./public/static/images/events/</a> l'image que vous voulez utiliser</li>
 <li> Rajouter dans <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/Events/EventController.ts">EventController</a> dans eventIdList l'id que vous avez donné à votre lieu, si celui-ci est accessible de n'importe où</li>
-<li> Si vous voulez que votre lieu soit accessible depuis un autre lieu spécifique, modifiez la destination d'un des output de cet autre lieu spécifique</li>
+<li> Si vous voulez que votre lieu soit accessible depuis un autre lieu spécifique, modifiez la destination d'un des outputs de cet autre lieu spécifique</li>
 </ol>
 
 ### Rajouter des mini jeux
@@ -50,7 +50,7 @@ Les différentes parties d'un mini-jeu :
   rajouter ici (
   e.g. <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/Minigames/MinigameList/Snek.tsx">Snek</a>)
 - refreshInterval : si votre jeu demande une actualisation et du mouvement hors des actions du joueur (comme des
-  mouvements d'ennemis), cette attribut gère le nombre de ms qu'il y a entre chaque rafraichissement (
+  mouvements d'ennemis), cet attribut gère le nombre de ms qu'il y a entre chaque rafraichissement (
   e.g <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/Minigames/MinigameList/Panier.tsx">jeu du
   panier</a>)
 - nbRow / nbCol : nombre de lignes et colonnes de votre grille
@@ -63,9 +63,9 @@ Les différentes parties d'un mini-jeu :
   c'est tirer les positions des différentes paires), laissez bien les deux initialisations de setter, ils permettent au
   jeu de faire les actualisations nécessaires.
 - caseTemplateCreate : permet de créer la case pour le composant (suffit de suivre les autres mini-jeux : juste
-  réécrivez la pour faire en sorte qu'elle appelle bien le contructeur de votre CaseTemplate)
+  réécrivez-la pour faire en sorte qu'elle appelle bien le contructeur de votre CaseTemplate)
 - playerInput : c'est ici que vous gérez les actions du joueur : c'est à vous de définir les différentes actions que le
-  joueur peut effectuer. Ca peut être des mouvements comme dans
+  joueur peut effectuer. Ça peut être des mouvements comme dans
   le <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/Minigames/MinigameList/Panier.tsx">jeu du
   panier</a>, ou des coordonnées avec le jeu
   du <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/Minigames/MinigameList/Memory.tsx">Memory</a>.
@@ -89,7 +89,7 @@ Secondaires :
 ### Patterns spécifiques
 
 - Mini-jeux : Pattern Invoker : La page des mini-jeux gère un mini-jeu générique, mais ne connait rien du mini-jeu. De
-  même, le mini-jeu ne connait pas ce qu'il y a autour, il exécute juste les commandes qu'on lui demande
+  même, le mini-jeu ne connait pas ce qu'il y a autour, il exécute juste les commandes qu'on lui demande.
 - Lieux / Classes : Pattern Factory : Les deux sont des objets génériques que l'on peut spécifier afin de créer de
   nouveaux pochoirs.
 
