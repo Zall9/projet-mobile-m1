@@ -111,5 +111,5 @@ Secondaires :
 - Multijoueur !
 - Implémenter un système de gratification (loot, badges, boutique pour dépenser des points)
 - Ajout d’un système de combat pour augmenter l’importance des classes (+ vie joueur)
-- Migration vers un environnement de développement adapté à la création d’un jeu ! (Flutter comme React ne sont pas fait
+- Migration vers un environnement de développement adapté à la création d’un jeu ! (Flutter comme React en NestJS ne sont pas adaptés
   pour la création de jeux mobiles, ils sont fait pour des applications bureaucratiques)
