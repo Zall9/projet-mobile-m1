@@ -24,10 +24,9 @@ avec de jolis noms et de belles images*). Certains de ces déplacements seront i
 ## Fonctionnalités
 
 - Leaderboard en temps réel !
-- ![image](https://user-images.githubusercontent.com/55153194/209970957-b3644b1d-5f51-4d78-b1d1-4094a8e2e47b.png)
+![image](https://user-images.githubusercontent.com/55153194/209970957-b3644b1d-5f51-4d78-b1d1-4094a8e2e47b.png)
 - <u>Déplacement entre lieux</u>*
-- ![image](https://user-images.githubusercontent.com/55153194/209971065-2131551b-062a-4340-bf3e-c1bb55015613.png)
-
+![image](https://user-images.githubusercontent.com/55153194/209971065-2131551b-062a-4340-bf3e-c1bb55015613.png)
 - <u>Mini-jeux en tout genre</u>*
 ![Sans](https://user-images.githubusercontent.com/55153194/209971646-4e954feb-9def-40d4-a756-fc010563de51.png)
 
