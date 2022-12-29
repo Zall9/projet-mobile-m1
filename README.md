@@ -1,24 +1,30 @@
 # Ov3r-T4le
 
+[//]: # (TODO : rajouter des illustrations pour les différentes parties)
+
 ## But du jeu
 
-grimper dans le ldb
+Le but du jeu est de grimper dans le leaderboard
 
-déplacement entre cartes, qui correspondent à des lieux ou parties de lieux
+*- Mais comment on fait pour le gravir ?*
 
-parfois au passage d'une carte, un minijeu se déclenche.
+Et bien pour cela vous devez terminer des mini-jeux ! Ces mini-jeux vous donnerons des points qui correspond à votre
+score dans le classement.
 
-quand le minijeu se termine on gagne des points
+*- Je veux bien terminer des mini-jeux, mais comment on en fait ?*
+
+Pour tomber sur des mini-jeux, vous devez vous déplacer entre les lieux mis à votre disposition (*ce sont les cartes
+avec de jolis noms et de belles images*). Certains de ces déplacements seront interrompus par des mini-jeux.
 
 ## Installation
 
 ## Fonctionnalités
 
-ldb
+- Leaderboard en temps réel !
+- <u>Déplacement entre lieux</u>*
+- <u>Mini-jeux en tout genre</u>*
 
-déplacement entre cartes (zones) (générique, donc possibilité d'en rajouter (voir en dessous comment faire))
-
-mini jeux en tout genre (générique, donc possibilité d'en rajouter (voir en dessous comment faire))
+*générique, donc possibilité d'en rajouter (voir en dessous comment faire)
 
 ### Rajouter des lieux
 
@@ -79,7 +85,8 @@ Tous les attributs et fonctions dont nous n'avons pas parlé, n'y touchez pas.
 
 ### Technologies
 
-Principale : React X Next.js
+Principale :
+Le jeu tourne avec le framework javascript React, avec en supplément Next.js.
 
 Secondaires :
 
@@ -95,5 +102,14 @@ Secondaires :
 
 ## Difficultés rencontrées
 
+- Choix du langage (flutter non merci plus jamais)
+
 ## Améliorations possibles
 
+- Implémentation de nouveaux Mini-jeux / Events avec des capacités plus techniques (lieu aléatoire, lieu dépendant de la
+  zone précédente, etc.)
+- Multijoueur !
+- Implémenter un système de gratification (loot, badges, boutique pour dépenser des points)
+- Ajout d’un système de combat pour augmenter l’importance des classes (+ vie joueur)
+- Migration vers un environnement de développement adapté à la création d’un jeu ! (Flutter comme React ne sont pas fait
+  pour la création de jeux mobiles, ils sont fait pour des applications bureaucratiques)
