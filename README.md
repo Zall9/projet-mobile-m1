@@ -18,8 +18,10 @@ Pour tomber sur des mini-jeux, vous devez vous déplacer entre les lieux mis à 
 avec de jolis noms et de belles images*). Certains de ces déplacements seront interrompus par des mini-jeux.
 
 ## Installation
-- Il suffit de clonner le dépot.
-- Ensuite lancer la commande `npm i` puis `npm run dev`
+- Il suffit de cloner le dépot.
+- Ensuite lancer la commande `npm i`.
+- Suite à cela, il faudra configurer votre instance firebase pour la database (pour les détails, suivez ce <a href="https://firebase.google.com/docs/database?hl=fr&authuser=0">tutoriel</a>). Seule subtilité : toutes les informations concernant la configuration de la bdd sont placés dans un fichier de config dans <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/ServerSideDB">/model/ServerSideDB</a>. Une config est déjà présente pour fonctionner avec la bdd actuelle. Si vous voulez mettre la votre, remplacer les informations dans le <a href="https://github.com/Zall9/projet-mobile-m1/tree/main/model/ServerSideDB/config.json">config.json</a>.
+- Enfin, faîtes `npm run dev`.
 
 ## Fonctionnalités
 
