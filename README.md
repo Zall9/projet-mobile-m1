@@ -1,4 +1,3 @@
-# Over-Tale
 ![image](https://user-images.githubusercontent.com/55153194/209970677-aafb0280-42ca-48ba-8b21-247af2ad5334.png)
 
 [//]: # (TODO : rajouter des illustrations pour les différentes parties)
